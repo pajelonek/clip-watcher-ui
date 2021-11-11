@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_bd8cccea8c834b30959266ebd5774999 }}/jelon97/clip-watcher-ui:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_bd8cccea8c834b30959266ebd5774999 }}/clip-watcher-ui:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
