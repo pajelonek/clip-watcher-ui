@@ -1,3 +1,12 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=bugs)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=code_smells)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=ncloc)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=security_rating)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=pajelonek_ebiznes-ui)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
