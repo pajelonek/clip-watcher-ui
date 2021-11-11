@@ -48,4 +48,4 @@ jobs:
         app-name: 'clip-watcher-ui'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_a5ee05ed549a411697fbc91397eff83b }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_bd8cccea8c834b30959266ebd5774999 }}/jelon97/clip-watcher-ui:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_bd8cccea8c834b30959266ebd5774999 }}/clip-watcher-ui:${{ github.sha }}'
