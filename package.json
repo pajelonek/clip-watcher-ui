@@ -1,6 +1,6 @@
 {
   "name": "clip-watcher-ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -38,7 +38,6 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/icons": "^4.11.2",
     "@mui/icons-material": "^5.5.1",
     "react-router-dom": "^6.2.2"
   }
