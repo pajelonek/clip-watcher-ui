@@ -9,6 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import * as React from "react";
+import {CardActionArea, CardMedia, Modal} from "@mui/material";
 
 export default function ClipsContainer() {
     const tiers = [
@@ -51,8 +52,53 @@ export default function ClipsContainer() {
         },
     ];
 
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+        maxWidth: 345
+    };
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
         <Container maxWidth="md" component="main">
+            <Button onClick={handleOpen}>Open modal</Button>
+            <Modal open={open} onClose={handleClose}
+                aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Card sx={style}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image="https://clips-media-assets2.twitch.tv/AT-cm%7C962031684-preview-480x272.jpg"
+                            alt="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Lizard
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Lizards are a widespread group of squamate reptiles, with over 6,000
+                                species, ranging across all continents except Antarctica
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary">
+                            Share
+                        </Button>
+                    </CardActions>
+                </Card>
+            </Modal>
             <Grid container spacing={5} alignItems="flex-end">
                 {tiers.map((tier) => (
                     // Enterprise card is full width at sm breakpoint
