@@ -28,7 +28,7 @@ export default function ClipsContainer() {
             })
         };
 
-        await fetch(process.env.REACT_APP_API_URL, requestOptions)
+        await fetch(process.env.REACT_APP_API_URL + '/clips', requestOptions)
             .then(r => r.json())
             .then(r => setClips(r.data))
             .catch(e => {
