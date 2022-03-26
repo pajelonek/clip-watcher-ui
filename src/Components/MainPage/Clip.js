@@ -51,13 +51,14 @@ export default function Clip(props) {
                    aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Card sx={style}>
                     <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            height="500px"
-                            image={props.clip.thumbnail_url}
-                            alt={props.clip.title}
-                        />
                         <CardContent>
+                            <iframe
+                                title={props.clip.title}
+                                src={props.clip.embed_url + "&parent=" + window.location.hostname}
+                                height="480"
+                                width="640"
+                                allowFullScreen>
+                            </iframe>
                             <Typography variant="h5" color="text.secondary">
                                 {props.clip.title}
                             </Typography>
@@ -71,13 +72,6 @@ export default function Clip(props) {
                             Share
                         </Button>
                     </CardActions>
-                    {/*<iframe*/}
-                    {/*    title={"ok"}*/}
-                    {/*    src="https://clips.twitch.tv/embed?clip=AverageSparklyTortoisePeoplesChamp&parent=streamernews.example.com"*/}
-                    {/*    height="<height>"*/}
-                    {/*    width="<width>"*/}
-                    {/*    allowFullScreen>*/}
-                    {/*</iframe>*/}
                 </Card>
             </Modal>
         </div>
