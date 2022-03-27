@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import Clip from "./Clip";
 import BouncingDotsLoader from "./BouncingDotsLoader";
 import {FormControl, InputLabel, NativeSelect} from "@mui/material";
+import ClipsPagination from "./ClipsPagination";
 
 export default function ClipsContainer() {
     const [clips, setClips] = useState(null);
@@ -42,40 +43,47 @@ export default function ClipsContainer() {
 
     return (
         <Container component="main" maxWidth={"xl"}>
-            <Grid container spacing={5}>
-                <Grid item key={'menu'} xs={10}>
-                    <Grid container xs={12} spacing={5} alignItems="flex-end">
-                    {clips && !loadingClips ?
-                        clips.map((clip) => (
-                            <Grid item key={clip.id} xs={6} sm={4} md={3}>
-                                <Clip clip={clip}/>
-                            </Grid>
-                        )) :
-                        <Grid item key={'loader'} xs={12}>
-                            <BouncingDotsLoader/>
-                        </Grid>
-                    }
-                </Grid>
-                </Grid>
-                <Grid item key={'sideMenu'} xs={2}>
+            <Grid container spacing={5} flexDirection={"row-reverse"}>
+                <Grid item key={'sideMenu'} xs={12} md={2}>
                     <Grid container xs={12}>
-                    <FormControl fullWidth>
-                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                            Age
-                        </InputLabel>
-                        <NativeSelect
-                            defaultValue={30}
-                            inputProps={{
-                                name: 'age',
-                                id: 'uncontrolled-native',
-                            }}
-                        >
-                            <option value={10}>Ten</option>
-                            <option value={20}>Twenty</option>
-                            <option value={30}>Thirty</option>
-                        </NativeSelect>
-                    </FormControl>
+                        <Grid item key={'sideMenuItem'} xs={12}>
+                            <FormControl fullWidth>
+                                <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                    Age
+                                </InputLabel>
+                                <NativeSelect
+                                    defaultValue={30}
+                                    inputProps={{
+                                        name: 'age',
+                                        id: 'uncontrolled-native',
+                                    }}
+                                >
+                                    <option value={10}>Ten</option>
+                                    <option value={20}>Twenty</option>
+                                    <option value={30}>Thirty</option>
+                                </NativeSelect>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
                 </Grid>
+                <Grid item key={'menu'} xs={12} md={10}>
+                    <Grid container xs={12} spacing={5} alignItems="flex-end">
+                        {clips && !loadingClips ?
+                            clips.map((clip) => (
+                                <Grid item key={clip.id} xs={12} sm={6} md={4} lg={3}>
+                                    <Clip clip={clip}/>
+                                </Grid>
+                            )) :
+                            <Grid item key={'loader'} xs={12}>
+                                <BouncingDotsLoader/>
+                            </Grid>
+                        }
+                        {clips ?
+                            <Grid item key={'pagination'} xs={12}>
+                                <ClipsPagination/>
+                            </Grid> : null
+                        }
+                    </Grid>
                 </Grid>
             </Grid>
 
