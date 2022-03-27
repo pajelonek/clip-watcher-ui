@@ -3,8 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
-import TrendingBox from "../Components/MainPage/TrendingBox";
-import ContentSection from "../Components/MainPage/ContentSection";
+import TrendingBox from "../Components/MainPage/TrendingSection/TrendingBox";
+import ContentSection from "../Components/MainPage/ContentSection/ContentSection";
 
 export default function MainPage() {
 

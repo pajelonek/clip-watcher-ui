@@ -2,13 +2,13 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import * as React from "react";
 import {Box, Divider} from "@mui/material";
-import SideBarFilterList from "./SideBar/SideBarFilterList";
-import SideBarCategoryList from "./SideBar/SideBarCategoryList";
-import SideBarChannelList from "./SideBar/SideBarChannelList";
-import ClipsContainer from "./ClipsSection/ClipsContainer";
+import SideBarFilterList from "../SideBar/SideBarFilterList";
+import SideBarCategoryList from "../SideBar/SideBarCategoryList";
+import SideBarChannelList from "../SideBar/SideBarChannelList";
+import ClipsContainer from "./ClipsContainer";
 import {useEffect, useState} from "react";
-import ClipsPagination from "./ClipsSection/ClipsPagination";
-import PeriodRadioFilter from "./SideBar/PeriodRadioFilter";
+import ClipsPagination from "./ClipsPagination";
+import PeriodRadioFilter from "../SideBar/PeriodRadioFilter";
 
 export default function ContentSection() {
     const [clips, setClips] = useState(null);
