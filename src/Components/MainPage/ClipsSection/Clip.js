@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
-import Button from "@mui/material/Button";
+import './ClipIframe.css';
 
 export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
@@ -16,8 +16,8 @@ export default function Clip(props) {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '80%',
-        height: '80%',
+        width: '90%',
+        height: '90%',
         maxHeight: 800,
         bgcolor: 'background.paper',
         border: '2px solid #000',
@@ -31,7 +31,7 @@ export default function Clip(props) {
                 <CardActionArea onClick={handleOpen}>
                     <CardMedia
                         component="img"
-                        height="140"
+                        height="120"
                         image={props.clip.thumbnail_url}
                         alt="green iguana"
                     />
@@ -39,7 +39,7 @@ export default function Clip(props) {
                         <Typography gutterBottom variant="h5" component="div">
                             {props.clip.broadcaster_name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography maxHeight={'15px'} wrap variant="body2" color="text.secondary">
                             {props.clip.title}
                         </Typography>
                     </CardContent>
@@ -50,28 +50,13 @@ export default function Clip(props) {
             <Modal open={open} onClose={handleClose}
                    aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Card sx={style}>
-                    <CardActionArea>
-                        <CardContent>
-                            <iframe
-                                title={props.clip.title}
-                                src={props.clip.embed_url + "&parent=" + window.location.hostname}
-                                height="480"
-                                width="640"
-                                allowFullScreen>
-                            </iframe>
-                            <Typography variant="h5" color="text.secondary">
-                                {props.clip.title}
-                            </Typography>
-                            <Typography gutterBottom variant="body2" component="div">
-                                {props.clip.broadcaster_name}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Share
-                        </Button>
-                    </CardActions>
+                    <iframe
+                        title={props.clip.title}
+                        src={props.clip.embed_url + "&parent=" + window.location.hostname}
+                        width="50%"
+                        style={style}
+                        allowFullScreen>
+                    </iframe>
                 </Card>
             </Modal>
         </div>

@@ -7,7 +7,7 @@ export default function SideBarChannelList() {
         <Grid item key={'ChannelList'} xs={12}>
             <Grid container spacing={1}>
                 <Grid item key={'channelLabel'} xs={12}>
-                    Channel:
+                    Channels:
                 </Grid>
                 <Grid item key={'channelFilter'} xs={12}>
                     <ChannelFilter/>

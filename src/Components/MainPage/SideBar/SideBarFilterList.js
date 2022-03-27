@@ -4,7 +4,7 @@ import * as React from "react";
 export default function SideBarFilterList() {
     return (
         <Grid item key={'SideBarFilterList'} xs={12}>
-            Filters:
+            Applied filters:
         </Grid>
     );
 }

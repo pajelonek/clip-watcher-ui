@@ -132,7 +132,7 @@ export default function SideBarCategoryList() {
 
     return (
         <Grid item key={'CategoriesList'} xs={12}>
-            <Grid container spacing={1}>
+            <Grid container>
                 <Grid item key={'categoryLabel'} xs={12}>
                     Categories:
                 </Grid>
@@ -147,8 +147,7 @@ export default function SideBarCategoryList() {
                             <TextField
                                 {...params}
                                 variant="standard"
-                                label="Category"
-                                placeholder="Category"
+                                placeholder="Select category"
                             />
                         )}
                     />

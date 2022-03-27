@@ -57,7 +57,7 @@ export default function ChannelFilter() {
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    label="Asynchronous"
+                    label="Search a channel"
                     InputProps={{
                         ...params.InputProps,
                         endAdornment: (
