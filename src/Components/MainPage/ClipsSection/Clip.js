@@ -25,8 +25,6 @@ export default function Clip(props) {
         p: 4
     };
 
-    console.log('clip');
-    console.log(props.clip);
     return (
         <div>
             <Card sx={{maxWidth: 345}}>
