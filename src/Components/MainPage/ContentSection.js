@@ -8,6 +8,7 @@ import SideBarChannelList from "./SideBar/SideBarChannelList";
 import ClipsContainer from "./ClipsSection/ClipsContainer";
 import {useEffect, useState} from "react";
 import ClipsPagination from "./ClipsSection/ClipsPagination";
+import PeriodRadioFilter from "./SideBar/PeriodRadioFilter";
 
 export default function ContentSection() {
     const [clips, setClips] = useState(null);
@@ -62,6 +63,14 @@ export default function ContentSection() {
                                     maxWidth: 300, borderRadius: 1
                                 }}>
                                     <SideBarFilterList/>
+                                </Box>
+                                <Divider component="ul"/>
+                                <Box sx={{
+                                    display: 'inline-list-item', flexWrap: 'nowrap',
+                                    p: 1, m: 1, bgcolor: 'background.paper',
+                                    maxWidth: 300, borderRadius: 1
+                                }}>
+                                    <PeriodRadioFilter/>
                                 </Box>
                                 <Divider component="ul"/>
                                 <Box sx={{

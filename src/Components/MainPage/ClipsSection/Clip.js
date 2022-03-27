@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
-import './ClipIframe.css';
 
 export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
