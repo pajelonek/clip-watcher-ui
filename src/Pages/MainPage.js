@@ -4,7 +4,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
 import TrendingBox from "../Components/MainPage/TrendingBox";
-import ClipsContainer from "../Components/MainPage/ClipsContainer";
+import ContentSection from "../Components/MainPage/ContentSection";
 
 export default function MainPage() {
 
@@ -17,7 +17,7 @@ export default function MainPage() {
             {/* Trending Box unit */}
             <TrendingBox/>
             {/* Clips Container unit */}
-            <ClipsContainer/>
+            <ContentSection/>
             {/* Footer */}
             <Footer/>
         </React.Fragment>

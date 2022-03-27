@@ -1,18 +1,8 @@
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import * as React from "react";
-import {useEffect, useState} from "react";
-import Clip from "./Clip";
-import BouncingDotsLoader from "./BouncingDotsLoader";
 import {Autocomplete, TextField} from "@mui/material";
-import ClipsPagination from "./ClipsPagination";
-import ChannelFilter from "./ChannelFilter";
+import * as React from "react";
 
-export default function ClipsContainer() {
-    const [clips, setClips] = useState(null);
-    const [loadingClips, setLoadingClips] = useState(false);
-
-    // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
+export default function SideBarCategoryList() {
     const top100Films = [
         {title: 'The Shawshank Redemption', year: 1994},
         {title: 'The Godfather', year: 1972},
@@ -140,101 +130,30 @@ export default function ClipsContainer() {
         {title: 'Monty Python and the Holy Grail', year: 1975},
     ];
 
-    const fetchClips = async () => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + btoa(process.env.REACT_APP_API_AUTH_USERNAME + ':' + process.env.REACT_APP_API_AUTH_PASSWORD),
-            },
-            body: JSON.stringify({
-                "gameId": "509658",
-                "first": "24"
-            })
-        };
-
-        setLoadingClips(true);
-
-        await fetch(process.env.REACT_APP_API_URL + '/clips', requestOptions)
-            .then(r => r.json())
-            .then(r => setClips(r.data))
-            .catch(e => {
-                console.log('error');
-                console.log(e);
-            }).finally(() => {
-                setLoadingClips(false);
-            });
-    };
-
-    useEffect(() => {
-        fetchClips();
-    }, []);
-
     return (
-        <Container component="main" maxWidth={"xl"}>
-            <Grid container spacing={5} flexDirection={"row-reverse"}>
-                <Grid item key={'sideMenu'} xs={12} md={2} style={{backgroundColor: 'palette.action.selected'}}>
-                    <Grid container xs={12} spacing={2}>
-                        <Grid item key={'FiltersList'} xs={12}>
-                            Filters:
-                        </Grid>
-                        <Grid item key={'CategoriesList'} xs={12}>
-                            <Grid container spacing={1}>
-                                <Grid item key={'categoryLabel'} xs={12}>
-                                    Categories:
-                                </Grid>
-                                <Grid item key={'categoryFilter'} xs={12}>
-                                    <Autocomplete
-                                        multiple
-                                        id="categoryId"
-                                        options={top100Films}
-                                        getOptionLabel={(option) => option.title}
-                                        defaultValue={[top100Films[13]]}
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                variant="standard"
-                                                label="Category"
-                                                placeholder="Category"
-                                            />
-                                        )}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                        <Grid item key={'ChannelList'} xs={12}>
-                            <Grid container spacing={1}>
-                                <Grid item key={'channelLabel'} xs={12}>
-                                    Channel:
-                                </Grid>
-                                <Grid item key={'channelFilter'} xs={12}>
-                                    <ChannelFilter/>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
+        <Grid item key={'CategoriesList'} xs={12}>
+            <Grid container spacing={1}>
+                <Grid item key={'categoryLabel'} xs={12}>
+                    Categories:
                 </Grid>
-                <Grid item key={'menu'} xs={12} md={10}>
-                    <Grid container xs={12} spacing={5} alignItems="flex-end">
-                        {clips && !loadingClips ?
-                            clips.map((clip) => (
-                                <Grid item key={clip.id} xs={12} sm={6} md={4} lg={3}>
-                                    <Clip clip={clip}/>
-                                </Grid>
-                            )) :
-                            <Grid item key={'loader'} xs={12}>
-                                <BouncingDotsLoader/>
-                            </Grid>
-                        }
-                        {clips ?
-                            <Grid item key={'pagination'} xs={12}>
-                                <ClipsPagination/>
-                            </Grid> : null
-                        }
-                    </Grid>
+                <Grid item key={'categoryFilter'} xs={12}>
+                    <Autocomplete
+                        multiple
+                        id="categoryId"
+                        options={top100Films}
+                        getOptionLabel={(option) => option.title}
+                        defaultValue={[top100Films[13]]}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                variant="standard"
+                                label="Category"
+                                placeholder="Category"
+                            />
+                        )}
+                    />
                 </Grid>
             </Grid>
-
-        </Container>
+        </Grid>
     );
 }
