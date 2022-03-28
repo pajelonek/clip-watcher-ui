@@ -1,4 +1,5 @@
 import React from "react";
+import "./BouncingDotsLoader.css";
 
 const BouncingDotsLoader = () => {
     return (

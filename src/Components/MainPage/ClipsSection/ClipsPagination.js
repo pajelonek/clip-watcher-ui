@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 export default function ClipsPagination(props) {
     return (
         !props.loadingClips ?
-            <Grid item key={'pagination'} xs={12}>
+            <Grid item key={'pagination'} xs={12} marginTop={'3%'}>
                 <Stack spacing={2}>
                     <Pagination count={10} size="large" style={{margin: "auto"}}/>
                 </Stack>

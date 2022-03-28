@@ -97,7 +97,6 @@ const topFilms = [
         year: 1980,
     },
     { title: 'Forrest Gump', year: 1994 },
-    { title: 'Inception', year: 2010 },
     {
         title: 'The Lord of the Rings: The Two Towers',
         year: 2002,

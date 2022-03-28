@@ -12,12 +12,12 @@ export default function ContentSection() {
 
     return (
         <Container component="main" maxWidth={"xl"}>
-            <Grid container spacing={5} flexDirection={"row-reverse"}>
+            <Grid container flexDirection={"row-reverse"}>
                 <Grid item key={'sideMenu'} xs={12} lg={2}>
                     <SideBar/>
                 </Grid>
                 <Grid item key={'clipsContainer'} xs={12} lg={10}>
-                    <Grid container xs={12} spacing={5} alignItems="flex-end">
+                    <Grid container xs={12} alignItems="flex-end">
                         <ClipsContainer clips={response} loadingClips={loading} hasError={hasError}/>
                     </Grid>
                 </Grid>

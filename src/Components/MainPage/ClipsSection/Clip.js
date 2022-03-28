@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
 
 export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
@@ -25,39 +26,41 @@ export default function Clip(props) {
     };
 
     return (
-        <div>
-            <Card sx={{maxWidth: 345}}>
-                <CardActionArea onClick={handleOpen}>
-                    <CardMedia
-                        component="img"
-                        height="120"
-                        image={props.clip.thumbnail_url}
-                        alt="green iguana"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {props.clip.broadcaster_name}
-                        </Typography>
-                        <Typography maxHeight={'15px'} variant="body2" color="text.secondary">
-                            {props.clip.title}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                    </CardActions>
-                </CardActionArea>
-            </Card>
-            <Modal open={open} onClose={handleClose}
-                   aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-                <Card sx={style}>
-                    <iframe
-                        title={props.clip.title}
-                        src={props.clip.embed_url + "&parent=" + window.location.hostname}
-                        width="50%"
-                        style={style}
-                        allowFullScreen>
-                    </iframe>
+        <Grid container direction="row" justifyContent="center" alignItems="center">
+            <Grid item xs={10} marginTop={'5%'}>
+                <Card>
+                    <CardActionArea onClick={handleOpen}>
+                        <CardMedia
+                            component="img"
+                            height="120"
+                            image={props.clip.thumbnail_url}
+                            alt="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {props.clip.broadcaster_name}
+                            </Typography>
+                            <Typography maxHeight={'15px'} variant="body2" color="text.secondary">
+                                {props.clip.title}
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                        </CardActions>
+                    </CardActionArea>
                 </Card>
-            </Modal>
-        </div>
+                <Modal open={open} onClose={handleClose}
+                       aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                    <Card sx={style}>
+                        <iframe
+                            title={props.clip.title}
+                            src={props.clip.embed_url + "&parent=" + window.location.hostname}
+                            width="50%"
+                            style={style}
+                            allowFullScreen>
+                        </iframe>
+                    </Card>
+                </Modal>
+            </Grid>
+        </Grid>
     );
 }

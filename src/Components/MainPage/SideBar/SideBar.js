@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import {Box, Divider} from "@mui/material";
+import {Box} from "@mui/material";
 import SideBarFilterList from "./SideBarFilterList";
 import PeriodRadioFilter from "./PeriodRadioFilter";
 import SideBarCategoryList from "./SideBarCategoryList";
@@ -14,41 +14,20 @@ export default function SideBar() {
     };
 
     return (
-        <Box sx={{...commonStyles, borderRadius: '16px'}}>
+        <Box sx={{...commonStyles, borderRadius: '3px'}}>
             <Grid container xs={12}>
-                <ul>
-                    <Box sx={{
-                        display: 'flex', flexWrap: 'wrap',
-                        p: 1, m: 1, bgcolor: 'background.paper',
-                        maxWidth: 300, borderRadius: 1
-                    }}>
-                        <SideBarFilterList/>
-                    </Box>
-                    <Divider component="ul"/>
-                    <Box sx={{
-                        display: 'inline-list-item', flexWrap: 'nowrap',
-                        p: 1, m: 1, bgcolor: 'background.paper',
-                        maxWidth: 300, borderRadius: 1
-                    }}>
-                        <PeriodRadioFilter/>
-                    </Box>
-                    <Divider component="ul"/>
-                    <Box sx={{
-                        display: 'flex', flexWrap: 'wrap',
-                        p: 1, m: 1, bgcolor: 'background.paper',
-                        maxWidth: 300, borderRadius: 1
-                    }}>
-                        <SideBarCategoryList/>
-                    </Box>
-                    <Divider component="ul"/>
-                    <Box sx={{
-                        display: 'flex', flexWrap: 'wrap',
-                        p: 1, m: 1, bgcolor: 'background.paper',
-                        maxWidth: 300, borderRadius: 1
-                    }}>
-                        <SideBarChannelList/>
-                    </Box>
-                </ul>
+                <Grid item key={'SideBarFilterList'} xs={12} sm={6} md={3} lg={12}>
+                    <SideBarFilterList/>
+                </Grid>
+                <Grid item key={'SideBarRadioList'} xs={12} sm={6} md={3} lg={12}>
+                    <PeriodRadioFilter/>
+                </Grid>
+                <Grid item key={'CategoriesList'} xs={12} sm={6} md={3} lg={12}>
+                    <SideBarCategoryList/>
+                </Grid>
+                <Grid item key={'ChannelList'} xs={12} sm={6} md={3} lg={12}>
+                    <SideBarChannelList/>
+                </Grid>
             </Grid>
         </Box>
     );
