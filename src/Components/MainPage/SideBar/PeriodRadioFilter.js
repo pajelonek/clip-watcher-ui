@@ -4,14 +4,19 @@ import Grid from "@mui/material/Grid";
 import * as React from "react";
 
 export default function PeriodRadioFilter() {
+    
+    function handleOnChange(e) {
+        localStorage.setItem('period', e.currentTarget.value);
+    }
+
     return (
         <FormControl>
             <FormLabel id="demo-row-radio-buttons-group-label">Period</FormLabel>
-            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group">
+            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group"
+            onChange={handleOnChange}>
                 <Grid container>
                     <Grid item xs={12}>
-                        <FormControlLabel value="today" control={<Radio/>} label="Today"/>
+                        <FormControlLabel value="today" control={<Radio />} label="Today"/>
                     </Grid>
                     <Grid item xs={12}>
                         <FormControlLabel value="week" control={<Radio/>} label="Week"/>

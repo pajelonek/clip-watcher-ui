@@ -38,7 +38,7 @@ export default function Clip(props) {
                         <Typography gutterBottom variant="h5" component="div">
                             {props.clip.broadcaster_name}
                         </Typography>
-                        <Typography maxHeight={'15px'} wrap variant="body2" color="text.secondary">
+                        <Typography maxHeight={'15px'} variant="body2" color="text.secondary">
                             {props.clip.title}
                         </Typography>
                     </CardContent>

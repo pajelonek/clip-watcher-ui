@@ -4,7 +4,6 @@ import BouncingDotsLoader from "../Common/BouncingDotsLoader";
 import * as React from "react";
 
 export default function ClipsContainer(props) {
-
     return (
         props.clips && !props.loadingClips ?
             props.clips.map((clip) => (

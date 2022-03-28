@@ -4,7 +4,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
 import TrendingBox from "../Components/MainPage/TrendingSection/TrendingBox";
-import ContentSection from "../Components/MainPage/ContentSection/ContentSection";
+import ContentSection from "../Components/MainPage/ContentSection";
 
 export default function MainPage() {
 
