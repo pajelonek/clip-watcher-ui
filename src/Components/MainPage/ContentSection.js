@@ -4,11 +4,16 @@ import * as React from "react";
 import ClipsContainer from "./ClipsSection/ClipsContainer";
 import ClipsPagination from "./ClipsSection/ClipsPagination";
 import SideBar from "./SideBar/SideBar";
-import useAPI from "../../Services/Api/useAPI";
-import {clipsAPIOps} from "../../Services/Api/clipsAPIOps";
+import {useGetClipsQuery} from "../../Services/Redux/clipsApi";
+import {useSelector} from "react-redux";
+import {selectPeriod} from "../../Services/Redux/periodSlice";
 
 export default function ContentSection() {
-    const [response, loading, hasError] = useAPI(process.env.REACT_APP_API_URL + '/clips', clipsAPIOps);
+    const period = useSelector(selectPeriod);
+
+    const { data, error, isLoading, isUninitialized, isFetching } = useGetClipsQuery(period, {
+        refetchOnMountOrArgChange: true
+    });
 
     return (
         <Container component="main" maxWidth={"xl"}>
@@ -18,11 +23,11 @@ export default function ContentSection() {
                 </Grid>
                 <Grid item key={'clipsContainer'} xs={12} lg={10}>
                     <Grid container xs={12} alignItems="flex-end">
-                        <ClipsContainer clips={response} loadingClips={loading} hasError={hasError}/>
+                        <ClipsContainer clips={data?.data} loadingClips={isFetching} isLoading={isLoading} isUninitialized={isUninitialized} hasError={error}/>
                     </Grid>
                 </Grid>
                 <Grid item key={'menu'} xs={12}>
-                    <ClipsPagination loadingClips={loading}/>
+                    <ClipsPagination loadingClips={isFetching}/>
                 </Grid>
             </Grid>
         </Container>

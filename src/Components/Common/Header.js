@@ -17,8 +17,7 @@ export default function Header() {
             position="static"
             color="default"
             elevation={0}
-            sx={{borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}
-        >
+            sx={{boxShadow: 1, borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}>
             <Toolbar sx={{flexWrap: 'wrap'}}>
                 <Typography variant="h6" color="inherit" sx={{flexGrow: 1}}>
                     Clip Watcher

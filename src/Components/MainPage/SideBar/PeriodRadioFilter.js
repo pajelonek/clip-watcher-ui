@@ -2,11 +2,15 @@ import FormControl from "@mui/material/FormControl";
 import {Box, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import * as React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {setPeriod, selectPeriod} from '../../../Services/Redux/periodSlice';
 
 export default function PeriodRadioFilter() {
+    const dispatch = useDispatch();
+    const period = useSelector(selectPeriod);
 
     function handleOnChange(e) {
-        localStorage.setItem('period', e.currentTarget.value);
+        dispatch(setPeriod(e.currentTarget.value));
     }
 
     return (
@@ -18,7 +22,7 @@ export default function PeriodRadioFilter() {
             <FormControl>
                 <FormLabel id="sidebar-radio-label">Period</FormLabel>
                 <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group" /*value={}*/ onChange={handleOnChange}>
+                            name="row-radio-buttons-group" value={period ? period : 'today' } onChange={handleOnChange}>
                     <Grid container>
                         <Grid item xs={12}>
                             <FormControlLabel value="today" control={<Radio size="small"/>} label="Today"/>
