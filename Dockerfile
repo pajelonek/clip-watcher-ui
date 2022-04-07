@@ -4,7 +4,6 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY ./package.json /app/
 COPY ./yarn.lock /app/
-COPY ./package-lock.json.lock /app/
 RUN yarn
 COPY . /app
 RUN yarn build
