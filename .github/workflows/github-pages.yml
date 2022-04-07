@@ -1,35 +1,26 @@
-name: GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
-
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v1
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Deploy
-        run: npm deploy
+      - name: Build
+        run: |
+          npm predeploy
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
           REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: gh-pages
+          folder: ./build
