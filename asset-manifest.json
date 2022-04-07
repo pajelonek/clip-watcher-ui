@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/clipwatcher/static/css/main.2f6ce5c1.css",
+    "main.js": "/clipwatcher/static/js/main.07915c49.js",
+    "static/js/787.c8efb7f9.chunk.js": "/clipwatcher/static/js/787.c8efb7f9.chunk.js",
+    "index.html": "/clipwatcher/index.html",
+    "main.2f6ce5c1.css.map": "/clipwatcher/static/css/main.2f6ce5c1.css.map",
+    "main.07915c49.js.map": "/clipwatcher/static/js/main.07915c49.js.map",
+    "787.c8efb7f9.chunk.js.map": "/clipwatcher/static/js/787.c8efb7f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f6ce5c1.css",
+    "static/js/main.07915c49.js"
+  ]
+}
