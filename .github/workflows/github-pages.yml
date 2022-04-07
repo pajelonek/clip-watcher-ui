@@ -1,38 +1,38 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - master
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - run: npm ci
-      - run: npm run build
-        env:
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-          REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
-          REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+# to fix at later date name: Deploy to GitHub Pages
+# to fix at later date
+#on:
+#  push:
+#    branches:
+#      - master
+#jobs:
+#  build-and-deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - name: Setup Node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: '14'
+#
+#      - name: Cache dependencies
+#        uses: actions/cache@v2
+#        with:
+#          path: ~/.npm
+#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-node-
+#
+#      - run: npm ci
+#      - run: npm run build
+#        env:
+#          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+#          REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
+#          REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
+#
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        if: ${{ github.ref == 'refs/heads/master' }}
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./build
