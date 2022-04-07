@@ -27,11 +27,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: yarn build
-
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+        run: npm deploy
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
+          REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
