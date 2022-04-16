@@ -3,7 +3,7 @@ import {Box, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material
 import Grid from "@mui/material/Grid";
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setPeriod, selectPeriod} from '../../../Services/Redux/periodSlice';
+import {setPeriod, selectPeriod} from '../../../Services/Redux/filterSlice';
 
 export default function PeriodRadioFilter() {
     const dispatch = useDispatch();

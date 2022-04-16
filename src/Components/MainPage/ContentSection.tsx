@@ -1,17 +1,21 @@
+import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import * as React from "react";
 import ClipsContainer from "./ClipsSection/ClipsContainer";
 import ClipsPagination from "./ClipsSection/ClipsPagination";
 import SideBar from "./SideBar/SideBar";
-import {useGetClipsQuery} from "../../Services/Redux/clipsApi";
+import {useGetClipsQuery} from "../../Services/Redux/twitchApi";
 import {useSelector} from "react-redux";
-import {selectPeriod} from "../../Services/Redux/periodSlice";
+import {FilterState, selectCategory, selectPeriod} from "../../Services/Redux/filterSlice";
 
 export default function ContentSection() {
-    const period = useSelector(selectPeriod);
 
-    const { data, error, isLoading, isUninitialized, isFetching } = useGetClipsQuery(period, {
+    const filterState: FilterState = {
+        period: useSelector(selectPeriod),
+        category: useSelector(selectCategory)
+    };
+
+    const { data, error, isLoading, isUninitialized, isFetching } = useGetClipsQuery(filterState, {
         refetchOnMountOrArgChange: true
     });
 

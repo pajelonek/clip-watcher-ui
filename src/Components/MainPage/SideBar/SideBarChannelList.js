@@ -2,8 +2,12 @@ import Grid from "@mui/material/Grid";
 import ChannelFilter from "./ChannelFilter";
 import * as React from "react";
 import {Box} from "@mui/material";
+import {useTopCategoryQuery} from "../../../Services/Redux/twitchApi";
 
 export default function SideBarChannelList() {
+    const { data, error, isLoading, isUninitialized, isFetching } = useTopCategoryQuery('100', {
+        refetchOnMountOrArgChange: false
+    });
     return (
         <Box xs={3} lg={12} sx={{
             display: 'flex', flexWrap: 'wrap',

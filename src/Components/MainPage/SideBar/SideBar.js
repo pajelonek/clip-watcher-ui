@@ -1,10 +1,10 @@
+import * as React from "react";
 import Grid from "@mui/material/Grid";
 import {Box} from "@mui/material";
 import SideBarFilterList from "./SideBarFilterList";
 import PeriodRadioFilter from "./PeriodRadioFilter";
 import SideBarCategoryList from "./SideBarCategoryList";
 import SideBarChannelList from "./SideBarChannelList";
-import * as React from "react";
 
 export default function SideBar() {
     const commonStyles = {

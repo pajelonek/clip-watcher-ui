@@ -1,6 +1,6 @@
 {
   "name": "clip-watcher-ui",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "private": true,
   "homepage": "https://pajelonek.github.io/clip-watcher-ui",
   "dependencies": {
@@ -20,7 +20,10 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
     "redux-storage": "^4.1.2",
+    "redux-storage-engine-localstorage": "^1.1.4",
     "typescript": "^4.6.3",
     "web-vitals": "^1.0.1"
   },

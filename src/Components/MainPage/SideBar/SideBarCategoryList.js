@@ -1,14 +1,25 @@
-import Grid from "@mui/material/Grid";
-import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import * as React from "react";
+import Grid from "@mui/material/Grid";
+import {Box, FormControl} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import {useTopCategoryQuery} from "../../../Services/Redux/twitchApi";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import {setCategory} from "../../../Services/Redux/filterSlice";
+import {useDispatch} from "react-redux";
 
 export default function SideBarCategoryList() {
-    const [age, setAge] = React.useState('');
+    const dispatch = useDispatch();
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+    const {data, isUninitialized, isLoading} = useTopCategoryQuery('100', {
+        refetchOnMountOrArgChange: true
+    });
+
+    function replaceMaskUrlWithSize(urlWithMask, size) {
+        let log = urlWithMask.replace('{width}', size).replace('{height}', size);
+        console.log(log);
+        return log;
+    }
     return (
         <Box xs={3} lg={12} sx={{
             display: 'flex', flexWrap: 'wrap',
@@ -20,17 +31,38 @@ export default function SideBarCategoryList() {
                     <Typography>Category: </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <FormControl sx={{m: 1, minWidth: 120}}>
-                        <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
-                        <Select labelId="demo-simple-select-helper-label" id="demo-simple-select-helper"
-                                value={age} label="Age" onChange={handleChange}>
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
+                    <FormControl sx={{m: 1, minWidth: 200}}>
+                        <Autocomplete id="searchCategoryAutocomplete" sx={10}
+                                      options={!isUninitialized && !isLoading ? data.data : []} autoHighlight
+                                      getOptionLabel={(option) => option.name}
+                                      onChange={
+                                          (event, value) => {
+                                              dispatch(setCategory({id: value.id, name: value.name}));
+                                          }
+                                      }
+                                      renderOption={(props, option) => (
+                                          <Box component="li" sx={{'& > img': {mr: 2, flexShrink: 0}}} {...props}>
+                                              <img
+                                                  loading="lazy"
+                                                  width="20"
+                                                  srcSet={replaceMaskUrlWithSize(option.box_art_url, 20)}
+                                                  src={replaceMaskUrlWithSize(option.box_art_url, 20) + ` 2x`}
+                                                  alt={option.name}
+                                              />
+                                              {option.name}
+                                          </Box>
+                                      )}
+                                      renderInput={(params) => (
+                                          <TextField
+                                              {...params}
+                                              label="Choose a category"
+                                              inputProps={{
+                                                  ...params.inputProps,
+                                                  autoComplete: 'new-password', // disable autocomplete and autofill
+                                              }}
+                                          />
+                                      )}
+                        />
                     </FormControl>
                 </Grid>
             </Grid>
