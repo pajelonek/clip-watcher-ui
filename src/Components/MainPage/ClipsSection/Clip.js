@@ -26,15 +26,14 @@ export default function Clip(props) {
     };
 
     return (
-        <Grid container direction="row" justifyContent="center" alignItems="center">
-            <Grid item xs={10} marginTop={'5%'}>
-                <Card>
+        <Grid container marginTop={'3%'} spacing={2} direction="row" justifyContent="center" alignItems="center">
+            <Grid item xs={10}>
+                <Card sx={{width: '100%', height: '80%'}}>
                     <CardActionArea onClick={handleOpen}>
                         <CardMedia
                             component="img"
-                            height="120"
                             image={props.clip.thumbnail_url}
-                            alt="green iguana"
+                            alt="clip image"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">

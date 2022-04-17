@@ -5,8 +5,7 @@ import {Provider} from 'react-redux';
 import {store} from "./Services/Redux/store";
 
 export const ColorModeContext = React.createContext({
-    toggleColorMode: () => {}
-});
+    toggleColorMode: () => {}});
 
 function App() {
     const [mode, setMode] = React.useState('dark');
@@ -16,18 +15,27 @@ function App() {
             toggleColorMode: () => {
                 setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
             },
-        }),
-        [],
-    );
+        }), [],);
 
     const theme = React.useMemo(
         () =>
             createTheme({
                 palette: {
                     mode,
+                    ...(mode === 'light' ?
+                        {
+                            trendingBoxColor: {
+                                main: "rgba(147,239,236,0.83)"
+
+                            }
+                        } :
+                        {
+                            trendingBoxColor: {
+                                main: "rgba(0,255,247,0.44)"
+                            }
+                        })
                 },
-            }),
-        [mode],
+            }), [mode],
     );
 
     return (

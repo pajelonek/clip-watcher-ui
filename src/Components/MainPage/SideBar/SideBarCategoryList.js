@@ -16,9 +16,7 @@ export default function SideBarCategoryList() {
     });
 
     function replaceMaskUrlWithSize(urlWithMask, size) {
-        let log = urlWithMask.replace('{width}', size).replace('{height}', size);
-        console.log(log);
-        return log;
+        return urlWithMask.replace('{width}', size).replace('{height}', size);
     }
     return (
         <Box xs={3} lg={12} sx={{
@@ -31,13 +29,13 @@ export default function SideBarCategoryList() {
                     <Typography>Category: </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <FormControl sx={{m: 1, minWidth: 200}}>
-                        <Autocomplete id="searchCategoryAutocomplete" sx={10}
+                    <FormControl sx={{m: 1, width: '100%', maxWidth: '90%', marginLeft: '0'}}>
+                        <Autocomplete id="searchCategoryAutocomplete"
                                       options={!isUninitialized && !isLoading ? data.data : []} autoHighlight
                                       getOptionLabel={(option) => option.name}
                                       onChange={
                                           (event, value) => {
-                                              dispatch(setCategory({id: value.id, name: value.name}));
+                                              dispatch(setCategory({id: value.id, name: value.name, box_art_url: value.box_art_url}));
                                           }
                                       }
                                       renderOption={(props, option) => (

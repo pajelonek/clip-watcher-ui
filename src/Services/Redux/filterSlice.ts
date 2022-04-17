@@ -14,7 +14,8 @@ const initialState = {
     period: 'today',
     category: {
         id: 509658,
-        name: 'Just Chatting'
+        name: 'Just Chatting',
+        box_art_url: null
     }
 } as FilterState;
 
@@ -26,7 +27,6 @@ export const filterSlice = createSlice({
             state.period = action.payload
         },
         setCategory(state, action) {
-            console.log('category set');
             state.category = action.payload
         }
     }

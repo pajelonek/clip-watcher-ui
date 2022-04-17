@@ -54,6 +54,7 @@ export default function ChannelFilter() {
             getOptionLabel={(option) => option.title}
             options={options}
             loading={loading}
+            sx={{width: '100%', maxWidth: '90%', marginLeft: "0"}}
             renderInput={(params) => (
                 <TextField
                     {...params}

@@ -15,7 +15,7 @@ export default function Header() {
     return (
         <AppBar
             position="static"
-            color="default"
+            color="primary"
             elevation={0}
             sx={{boxShadow: 1, borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}>
             <Toolbar sx={{flexWrap: 'wrap'}}>
