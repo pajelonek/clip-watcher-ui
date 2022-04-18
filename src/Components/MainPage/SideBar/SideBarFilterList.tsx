@@ -17,8 +17,8 @@ export default function SideBarFilterList() {
     return (
         <Box sx={{
             display: 'block', flexWrap: 'nowrap',
-            p: 1, m: 1, bgcolor: 'background.paper',
-            maxWidth: 300, borderRadius: 1
+            p: 1, m: 1,
+            maxWidth: 300
         }}>
             <Typography>Applied filters: </Typography>
             <List>

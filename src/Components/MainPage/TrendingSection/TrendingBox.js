@@ -6,7 +6,11 @@ import {Paper} from "@mui/material";
 export default function TrendingBox() {
 
     return (
-        <Paper variant="outlined" square sx={{ bgcolor: (theme) => `${theme.palette.trendingBoxColor.main}`,boxShadow: 1, borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}>
+        <Paper variant="outlined" square
+               sx={{
+                   bgcolor: (theme) => `${theme.palette.trendingBoxColor.main}`,
+                   boxShadow: 1,
+                   borderBottom: (theme) => `2px solid ${theme.palette.divider}`}}>
             <Grid container style={{marginTop: '2%', marginBottom: '2%', textAlign: 'center'}}>
                 <Grid item xs={12}>
                     <iframe

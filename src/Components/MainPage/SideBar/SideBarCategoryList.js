@@ -21,7 +21,7 @@ export default function SideBarCategoryList() {
     return (
         <Box xs={3} lg={12} sx={{
             display: 'flex', flexWrap: 'wrap',
-            p: 1, m: 1, bgcolor: 'background.paper',
+            p: 1, m: 1,
             borderRadius: 1, maxWidth: '100%'
         }}>
             <Grid container>

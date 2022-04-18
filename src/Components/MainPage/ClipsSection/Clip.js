@@ -10,6 +10,7 @@ export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleMouseOver = () => console.log('mouse');
 
     const style = {
         position: 'absolute',
@@ -29,7 +30,9 @@ export default function Clip(props) {
         <Grid container marginTop={'3%'} spacing={2} direction="row" justifyContent="center" alignItems="center">
             <Grid item xs={10}>
                 <Card sx={{width: '100%', height: '80%'}}>
-                    <CardActionArea onClick={handleOpen}>
+                    <CardActionArea
+                        onMouseOver={handleMouseOver}
+                        onClick={handleOpen}>
                         <CardMedia
                             component="img"
                             image={props.clip.thumbnail_url}
@@ -43,8 +46,6 @@ export default function Clip(props) {
                                 {props.clip.title}
                             </Typography>
                         </CardContent>
-                        <CardActions>
-                        </CardActions>
                     </CardActionArea>
                 </Card>
                 <Modal open={open} onClose={handleClose}

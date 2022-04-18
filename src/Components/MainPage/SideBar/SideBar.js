@@ -7,17 +7,16 @@ import SideBarChannelList from "./SideBarChannelList";
 
 export default function SideBar() {
     const commonStyles = {
-        bgcolor: 'background.paper',
+        bgcolor: "#161617",
         borderColor: 'text.primary',
-        border: 1,
         margin: 'auto',
-        borderRadius: '3px',
+        borderRadius: '5px',
         marginTop: '5%'
     };
 
     return (
-        <Grid container>
-            <Grid item xs={10}>
+        <Grid id={'test'} container>
+            <Grid item xs={11} lg={10} sx={{margin: 'auto'}}>
                 <Grid container sx={{...commonStyles}}>
                     <Grid item key={'SideBarFilterList'} xs={12} sm={6} md={3} lg={12}>
                         <SideBarFilterList/>
@@ -28,7 +27,7 @@ export default function SideBar() {
                     <Grid item key={'CategoriesList'} xs={12} sm={6} md={3} lg={12}>
                         <SideBarCategoryList/>
                     </Grid>
-                    <Grid item key={'ChannelList'} xs={12} sm={6} md={3} lg={12}>
+                    <Grid item key={'ChannelList'} xs={12} sm={6} md={3} lg={12} >
                         <SideBarChannelList/>
                     </Grid>
                 </Grid>

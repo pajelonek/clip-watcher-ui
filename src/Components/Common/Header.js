@@ -7,6 +7,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import {useTheme} from "@mui/material/styles";
 import {ColorModeContext} from "../../App";
+import {Box} from "@mui/material";
 
 export default function Header() {
     const theme = useTheme();
@@ -15,9 +16,10 @@ export default function Header() {
     return (
         <AppBar
             position="static"
-            color="primary"
-            elevation={0}
-            sx={{boxShadow: 1, borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}>
+            sx={{
+                bgcolor: (theme) => `${theme.palette.navbar.main}`,
+                borderBottom: (theme) => `1.5px solid ${theme.palette.divider}`
+            }}>
             <Toolbar sx={{flexWrap: 'wrap'}}>
                 <Typography variant="h6" color="inherit" sx={{flexGrow: 1}}>
                     Clip Watcher
