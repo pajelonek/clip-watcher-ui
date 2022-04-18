@@ -18,11 +18,12 @@ export default function SideBarCategoryList() {
     function replaceMaskUrlWithSize(urlWithMask, size) {
         return urlWithMask.replace('{width}', size).replace('{height}', size);
     }
+
     return (
         <Box xs={3} lg={12} sx={{
             display: 'flex', flexWrap: 'wrap',
-            p: 1, m: 1,
-            borderRadius: 1, maxWidth: '100%'
+            p: 1, m: 1, borderRadius: 1,
+            maxWidth: '100%'
         }}>
             <Grid container>
                 <Grid item xs={12}>
@@ -35,9 +36,14 @@ export default function SideBarCategoryList() {
                                       getOptionLabel={(option) => option.name}
                                       onChange={
                                           (event, value) => {
-                                              dispatch(setCategory({id: value.id, name: value.name, box_art_url: value.box_art_url}));
+                                              dispatch(setCategory({
+                                                  id: value.id,
+                                                  name: value.name,
+                                                  box_art_url: value.box_art_url
+                                              }));
                                           }
                                       }
+
                                       renderOption={(props, option) => (
                                           <Box component="li" sx={{'& > img': {mr: 2, flexShrink: 0}}} {...props}>
                                               <img
@@ -50,6 +56,7 @@ export default function SideBarCategoryList() {
                                               {option.name}
                                           </Box>
                                       )}
+
                                       renderInput={(params) => (
                                           <TextField
                                               {...params}

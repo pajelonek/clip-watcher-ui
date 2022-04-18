@@ -5,8 +5,7 @@ import {Provider} from 'react-redux';
 import {store} from "./Services/Redux/store";
 
 export const ColorModeContext = React.createContext({
-    toggleColorMode: () => {
-    }
+    toggleColorMode: () => {}
 });
 
 function App() {
@@ -28,6 +27,10 @@ function App() {
                         {
                             trendingBoxColor: {
                                 main: "rgba(147,239,236,0.83)"
+                            },
+                            background: {
+                                paper: "rgba(147,239,236,0.83)",
+                                default: "rgba(147,239,236,0.83)"
                             },
                             contentSectionColor: {
                                 main: "#1976d2"
@@ -55,8 +58,6 @@ function App() {
             }), [mode],
     );
 
-    console.log('theme');
-    console.log(theme);
     return (
         <Provider store={store}>
             <ColorModeContext.Provider value={colorMode}>
