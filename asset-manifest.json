@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/clip-watcher-ui/static/css/main.68e91189.css",
-    "main.js": "/clip-watcher-ui/static/js/main.3300eb86.js",
+    "main.js": "/clip-watcher-ui/static/js/main.b931cdec.js",
     "static/js/787.c8efb7f9.chunk.js": "/clip-watcher-ui/static/js/787.c8efb7f9.chunk.js",
     "index.html": "/clip-watcher-ui/index.html",
     "main.68e91189.css.map": "/clip-watcher-ui/static/css/main.68e91189.css.map",
-    "main.3300eb86.js.map": "/clip-watcher-ui/static/js/main.3300eb86.js.map",
+    "main.b931cdec.js.map": "/clip-watcher-ui/static/js/main.b931cdec.js.map",
     "787.c8efb7f9.chunk.js.map": "/clip-watcher-ui/static/js/787.c8efb7f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.68e91189.css",
-    "static/js/main.3300eb86.js"
+    "static/js/main.b931cdec.js"
   ]
 }
