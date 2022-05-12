@@ -12,7 +12,7 @@ export default function SideBar() {
         borderColor: 'text.primary',
         margin: 'auto',
         borderRadius: '20px',
-        marginTop: '5%'
+        marginTop: '3%'
     };
 
     return (

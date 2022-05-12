@@ -2,7 +2,6 @@ import * as React from "react";
 import {CardActionArea, CardMedia, Modal} from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 
@@ -27,8 +26,8 @@ export default function Clip(props) {
     };
 
     return (
-        <Grid container marginTop={'3%'} spacing={2} direction="row" justifyContent="center" alignItems="center">
-            <Grid item xs={10}>
+        <Grid container marginTop={'3%'} spacing={1} direction="row" justifyContent="center" alignItems="center">
+            <Grid item xs={11.5}>
                 <Card sx={{width: '100%', height: '80%'}}>
                     <CardActionArea
                         onMouseOver={handleMouseOver}

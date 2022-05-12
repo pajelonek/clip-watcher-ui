@@ -11,9 +11,7 @@ import {useDispatch} from "react-redux";
 export default function SideBarCategoryList() {
     const dispatch = useDispatch();
 
-    const {data, isUninitialized, isLoading} = useTopCategoryQuery('100', {
-        refetchOnMountOrArgChange: true
-    });
+    const {data, isUninitialized, isLoading} = useTopCategoryQuery('100');
 
     function replaceMaskUrlWithSize(urlWithMask, size) {
         return urlWithMask.replace('{width}', size).replace('{height}', size);

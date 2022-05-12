@@ -11,7 +11,8 @@ export default function SideBarFilterList() {
 
     const filterState: FilterState = {
         period: useSelector(selectPeriod),
-        category: useSelector(selectCategory)
+        category: useSelector(selectCategory),
+        cursor: ''
     };
 
     return (

@@ -25,21 +25,25 @@ function resolveDate(period: string) : Date {
     return date;
 }
 
+const twitchApiHeaders = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Basic ' + btoa(process.env.REACT_APP_API_AUTH_USERNAME + ':' + process.env.REACT_APP_API_AUTH_PASSWORD),
+}
+
 export const twitchApi = createApi({
     reducerPath: 'clipsApi',
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_API_URL
     }),
+    keepUnusedDataFor: 1200,
+    tagTypes: ['Clips'],
     endpoints: (builder) => ({
         getClips: builder.query({
             query: (filterState: FilterState) => {
                 return ({
                     url: '/clips',
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Basic ' + btoa(process.env.REACT_APP_API_AUTH_USERNAME + ':' + process.env.REACT_APP_API_AUTH_PASSWORD),
-                    },
+                    headers: twitchApiHeaders,
                     body: {
                         "gameId": filterState.category.id,
                         "first": "24",
@@ -48,16 +52,14 @@ export const twitchApi = createApi({
                     }
                 });
             },
+            providesTags: ['Clips']
         }),
         searchCategory: builder.query({
             query: (query) => {
                 return ({
                     url: '/categories/search?query=' + query,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Basic ' + btoa(process.env.REACT_APP_API_AUTH_USERNAME + ':' + process.env.REACT_APP_API_AUTH_PASSWORD),
-                    }
+                    headers: twitchApiHeaders
                 });
             },
         }),
@@ -66,10 +68,7 @@ export const twitchApi = createApi({
                 return ({
                     url: '/categories/top',
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Basic ' + btoa(process.env.REACT_APP_API_AUTH_USERNAME + ':' + process.env.REACT_APP_API_AUTH_PASSWORD),
-                    },
+                    headers: twitchApiHeaders,
                     body: {
                         "first": first
                     }
