@@ -12,7 +12,9 @@ export default function SideBarFilterList() {
     const filterState: FilterState = {
         period: useSelector(selectPeriod),
         category: useSelector(selectCategory),
-        cursor: ''
+        cursor: {
+            value: ''
+        }
     };
 
     return (

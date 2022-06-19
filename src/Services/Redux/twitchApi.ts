@@ -35,7 +35,7 @@ export const twitchApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_API_URL
     }),
-    keepUnusedDataFor: 1200,
+    refetchOnMountOrArgChange : true,
     tagTypes: ['Clips'],
     endpoints: (builder) => ({
         getClips: builder.query({
@@ -48,7 +48,8 @@ export const twitchApi = createApi({
                         "gameId": filterState.category.id,
                         "first": "24",
                         "endedAt": new Date().toISOString(),
-                        "startedAt":  resolveDate(filterState.period).toISOString()
+                        "startedAt": resolveDate(filterState.period).toISOString(),
+                        "after": filterState.cursor.value,
                     }
                 });
             },

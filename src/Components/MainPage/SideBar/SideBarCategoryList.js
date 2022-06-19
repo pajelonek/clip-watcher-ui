@@ -1,15 +1,21 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import {Box, FormControl} from "@mui/material";
+import {Box, FormControl, Input, InputAdornment, InputLabel} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import {useTopCategoryQuery} from "../../../Services/Redux/twitchApi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import {setCategory} from "../../../Services/Redux/filterSlice";
-import {useDispatch} from "react-redux";
+import {selectCategory, setCategory} from "../../../Services/Redux/filterSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {AccountCircle} from "@mui/icons-material";
+
+function replaceMaskUrlWithSize(urlWithMask, width, height) {
+    return urlWithMask.replace('{width}', width).replace('{height}', height);
+}
 
 export default function SideBarCategoryList() {
     const dispatch = useDispatch();
+    const category = useSelector(selectCategory);
 
     const {data, isUninitialized, isLoading} = useTopCategoryQuery('100');
 
@@ -32,6 +38,7 @@ export default function SideBarCategoryList() {
                         <Autocomplete id="searchCategoryAutocomplete"
                                       options={!isUninitialized && !isLoading ? data.data : []} autoHighlight
                                       getOptionLabel={(option) => option.name}
+
                                       onChange={
                                           (event, value) => {
                                               dispatch(setCategory({
@@ -56,14 +63,16 @@ export default function SideBarCategoryList() {
                                       )}
 
                                       renderInput={(params) => (
-                                          <TextField
-                                              {...params}
-                                              label="Choose a category"
-                                              inputProps={{
-                                                  ...params.inputProps,
-                                                  autoComplete: 'new-password', // disable autocomplete and autofill
-                                              }}
-                                          />
+                                          <Box sx={{display: 'flex', alignItems: 'flex-end'}}>
+                                              <TextField
+                                                  id="input-with-icon-textfield"
+                                                  {...params}
+                                                  inputProps={{
+                                                      ...params.inputProps,
+                                                      autoComplete: 'new-password', // disable autocomplete and autofill
+                                                  }}
+                                              />
+                                          </Box>
                                       )}
                         />
                     </FormControl>

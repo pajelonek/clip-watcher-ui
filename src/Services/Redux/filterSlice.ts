@@ -3,12 +3,16 @@ import {createSlice} from '@reduxjs/toolkit'
 export interface FilterState {
     period: string,
     category: CategoryState,
-    cursor: string
+    cursor: CursorState
+}
+export interface CursorState {
+    value: string | null
 }
 
 export interface CategoryState {
     id: number,
-    name: string
+    name: string,
+    box_art_url: string
 }
 
 const initialState = {
@@ -16,9 +20,11 @@ const initialState = {
     category: {
         id: 509658,
         name: 'Just Chatting',
-        box_art_url: null
+        box_art_url: "https://static-cdn.jtvnw.net/ttv-boxart/509658-{width}x{height}.jpg"
     },
-    cursor: ''
+    cursor: {
+        value: ''
+    }
 } as FilterState;
 
 export const filterSlice = createSlice({

@@ -7,7 +7,12 @@ import {useGetClipsQuery} from "../../Services/Redux/twitchApi";
 import {useDispatch, useSelector} from "react-redux";
 import {FilterState, selectCategory, selectCursor, selectPeriod} from "../../Services/Redux/filterSlice";
 import Typography from "@mui/material/Typography";
-import {setCursor} from "../../Services/Redux/cursorSlice";
+import {addNewCursorToContext} from "../../Services/Redux/cursorSlice";
+import {Box} from "@mui/material";
+
+function replaceMaskUrlWithSize(urlWithMask: string, width: string, height: string) {
+    return urlWithMask.replace('{width}', width).replace('{height}', height);
+}
 
 export default function ContentSection() {
     const dispatch = useDispatch();
@@ -17,28 +22,54 @@ export default function ContentSection() {
         category: useSelector(selectCategory),
         cursor: useSelector(selectCursor)
     };
+    console.log('refresh');
+    console.log(filterState);
 
-    const {data, error, isLoading, isUninitialized, isFetching} = useGetClipsQuery(filterState);
+    const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);
 
-    if (data && data.pagination.cursor && filterState.cursor !== data.pagination.cursor) {
-        dispatch(setCursor(data.pagination.cursor));
+    if (data) {
+        console.log("if data ");
+        console.log("isLoading =  " + isLoading);
+        console.log("isUninitialized = " + isUninitialized);
+        console.log("isFetching =  " + isFetching);
+        console.log("isSuccess =  " + isSuccess);
+        if (!isLoading && !isUninitialized && !isFetching && isSuccess) {
+            dispatch(addNewCursorToContext(data.pagination.cursor));
+        }
     }
 
     return (
         <Grid container>
             <Grid item xs={12}>
                 <Grid container flexDirection={"row-reverse"}>
-                    <Grid item xs={12} marginLeft={'2%'} marginTop={'1%'}>
-                        <Typography variant="h4" component="h2">Most popular {filterState.category.name} clips
-                            from {filterState.period}</Typography>
-                    </Grid>
                     <Grid item key={'sideMenu'} xs={12} lg={3}>
                         <SideBar/>
                     </Grid>
-                    <Grid item key={'clipsContainer'} xs={12} lg={9}>
-                        <Grid container spacing={0}>
-                            <ClipsContainer clips={data?.data} loadingClips={isFetching} isLoading={isLoading}
-                                            isUninitialized={isUninitialized} hasError={error}/>
+                    <Grid item xs={12} lg={9}>
+                        <Grid container marginLeft={'2%'} marginTop={'2%'}>
+                            <Grid item xs={2}>
+                                <Box
+                                    component="img"
+                                    sx={{
+                                        height: 233,
+                                        width: 150,
+                                        maxHeight: {xs: 233, md: 167},
+                                        maxWidth: {xs: 350, md: 250},
+                                    }}
+                                    alt="The house from the offer."
+                                    src={replaceMaskUrlWithSize(filterState.category.box_art_url, "500", "500")}
+                                />
+                            </Grid>
+                            <Grid item xs={10}>
+                                <Typography variant="h4" component="h2" style={{'position': 'relative', 'top': '40%', 'left': '0'}}>Most popular {filterState.category.name} clips
+                                    from {filterState.period}</Typography>
+                            </Grid>
+                            <Grid item key={'clipsContainer'} xs={12}>
+                                <Grid container spacing={0}>
+                                    <ClipsContainer clips={data?.data} loadingClips={isFetching} isLoading={isLoading}
+                                                    isUninitialized={isUninitialized} hasError={error}/>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Grid item key={'menu'} xs={12}>
