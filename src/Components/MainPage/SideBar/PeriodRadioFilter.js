@@ -4,12 +4,15 @@ import Grid from "@mui/material/Grid";
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setPeriod, selectPeriod} from '../../../Services/Redux/filterSlice';
-
+import {clearCursorList} from "../../../Services/Redux/cursorSlice";
+import {clearPage} from "../../../Services/Redux/pageSlice";
 export default function PeriodRadioFilter() {
     const dispatch = useDispatch();
     const period = useSelector(selectPeriod);
 
     function handleOnChange(e) {
+        dispatch(clearCursorList());
+        dispatch(clearPage());
         dispatch(setPeriod(e.currentTarget.value));
     }
 

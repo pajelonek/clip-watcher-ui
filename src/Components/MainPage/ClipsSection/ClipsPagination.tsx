@@ -4,10 +4,18 @@ import Grid from "@mui/material/Grid";
 import {TablePagination} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {setCursor} from "../../../Services/Redux/filterSlice";
-import {CursorState, selectCursor, goBackWithCursor, setDirectionOfCursor} from "../../../Services/Redux/cursorSlice";
+import {
+    CursorState,
+    selectCursor,
+    goBackWithCursor,
+    setDirectionOfCursor,
+    goForwardWithCursor
+} from "../../../Services/Redux/cursorSlice";
+import {selectPage, setPage} from "../../../Services/Redux/pageSlice";
 
 export default function ClipsPagination(props: any) {
-    const [page, setPage] = React.useState(0);
+    const page: number = useSelector(selectPage);
+    //const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(24);
     const dispatch = useDispatch();
     const savedCursor: CursorState = useSelector(selectCursor);
@@ -16,35 +24,30 @@ export default function ClipsPagination(props: any) {
         event: React.MouseEvent<HTMLButtonElement> | null,
         newPage: number,
     ) => {
-        setPage(newPage);
         console.log("new page = " + newPage);
         console.log("old page = " + page);
         if (newPage > page) {
-            console.log("current page " + savedCursor.currentPage);
             dispatch(setDirectionOfCursor("after"));
             dispatch(setCursor({
-                value: savedCursor.cursorList[savedCursor.currentPage - 1],
+                value: savedCursor.cursorList[savedCursor.currentPage + 1],
             }));
+            dispatch(goForwardWithCursor());
         }
         else {
-            console.log('go back validation');
             dispatch(setDirectionOfCursor("before"));
-            if (savedCursor.currentPage - 2 <= 0) {
-                console.log('first page');
+            if (savedCursor.currentPage - 1 <= 0) {
                 dispatch(setCursor({
                     value: null,
                 }));
             }
             else {
-                console.log('other page' + savedCursor.currentPage);
-                console.log(savedCursor.cursorList.length);
-                console.log(savedCursor.cursorList[savedCursor.currentPage - 2]);
                 dispatch(setCursor({
-                    value: savedCursor.cursorList[savedCursor.currentPage - 2],
+                    value: savedCursor.cursorList[savedCursor.currentPage - 1],
                 }));
             }
             dispatch(goBackWithCursor());
         }
+        dispatch(setPage(newPage));
     };
 
     const handleChangeRowsPerPage = (

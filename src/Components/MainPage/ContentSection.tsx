@@ -22,17 +22,10 @@ export default function ContentSection() {
         category: useSelector(selectCategory),
         cursor: useSelector(selectCursor)
     };
-    console.log('refresh');
-    console.log(filterState);
 
     const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);
 
     if (data) {
-        console.log("if data ");
-        console.log("isLoading =  " + isLoading);
-        console.log("isUninitialized = " + isUninitialized);
-        console.log("isFetching =  " + isFetching);
-        console.log("isSuccess =  " + isSuccess);
         if (!isLoading && !isUninitialized && !isFetching && isSuccess) {
             dispatch(addNewCursorToContext(data.pagination.cursor));
         }

@@ -1,13 +1,14 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import {Box, FormControl, Input, InputAdornment, InputLabel} from "@mui/material";
+import {Box, FormControl} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import {useTopCategoryQuery} from "../../../Services/Redux/twitchApi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {selectCategory, setCategory} from "../../../Services/Redux/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {AccountCircle} from "@mui/icons-material";
+import {clearCursorList} from "../../../Services/Redux/cursorSlice";
+import {clearPage} from "../../../Services/Redux/pageSlice";
 
 function replaceMaskUrlWithSize(urlWithMask, width, height) {
     return urlWithMask.replace('{width}', width).replace('{height}', height);
@@ -41,6 +42,8 @@ export default function SideBarCategoryList() {
 
                                       onChange={
                                           (event, value) => {
+                                              dispatch(clearCursorList());
+                                              dispatch(clearPage());
                                               dispatch(setCategory({
                                                   id: value.id,
                                                   name: value.name,

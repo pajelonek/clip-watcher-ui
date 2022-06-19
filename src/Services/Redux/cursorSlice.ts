@@ -8,7 +8,7 @@ export interface CursorState {
 
 const initialState = {
     currentPage: 0,
-    cursorList: [],
+    cursorList: [""],
     direction: 'after'
 } as CursorState;
 
@@ -23,41 +23,33 @@ export const cursorSlice = createSlice({
         clearCursorList(state) {
             state.currentPage = initialState.currentPage;
             state.cursorList = initialState.cursorList;
+            state.direction = initialState.direction;
         },
         setNextCursorForPage(state, action) {
             state.currentPage = initialState.currentPage;
             state.cursorList = action.payload;
         },
         addNewCursorToContext(state, action) {
-            console.log('adding cursor to context if');
             const exists = state.cursorList.some(cursor => (cursor === action.payload));
             if (!exists && action.payload != null) {
-                console.log('adding cursor');
-                state.cursorList[state.currentPage] = action.payload;
-                console.log(state.cursorList.length);
+                state.cursorList[state.currentPage + 1] = action.payload;
+                state.cursorList.forEach(cursor => (console.log(cursor)));
             }
-            if (state.direction !== 'before') {
-                console.log("old current page = " + state.currentPage);
-                state.currentPage = state.currentPage + 1;
-                console.log("new current page = " + state.currentPage);
-            }
+        },
+        goForwardWithCursor(state) {
+            state.currentPage = state.currentPage + 1;
         },
         goBackWithCursor(state) {
-            console.log('going back');
-            console.log('OLD current page = ' + state.currentPage);
             state.currentPage = state.currentPage - 1;
-            console.log('NEW current page = ' + state.currentPage);
         },
         setDirectionOfCursor(state, action) {
-            console.log('old direction = ' + state.direction);
             state.direction = action.payload;
-            console.log('NEW direction = ' + action.payload);
         }
     }
 })
 
 export const selectCursor = (state: any) => state.cursor;
 
-export const {addNewCursorToContext, goBackWithCursor, setDirectionOfCursor} = cursorSlice.actions
+export const {addNewCursorToContext, goBackWithCursor, setDirectionOfCursor, goForwardWithCursor, clearCursorList} = cursorSlice.actions
 
 export default cursorSlice.reducer

@@ -33,9 +33,11 @@ export const filterSlice = createSlice({
     reducers: {
         setPeriod(state, action) {
             state.period = action.payload
+            state.cursor = initialState.cursor
         },
         setCategory(state, action) {
             state.category = action.payload
+            state.cursor = initialState.cursor
         },
         setCursor(state, action) {
             state.cursor = action.payload
