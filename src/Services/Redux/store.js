@@ -3,6 +3,8 @@ import { twitchApi } from './twitchApi';
 import filterReducer from './filterSlice';
 import cursorReducer from './cursorSlice';
 import pageReducer from './pageSlice';
+import channelReducer from './channelSlice';
+
 
 // import * as storage from 'redux-storage'
 // import { createStore, applyMiddleware, combineReducers } from 'redux';
@@ -15,6 +17,7 @@ export const store = configureStore({
         filter: filterReducer,
         cursor: cursorReducer,
         page: pageReducer,
+        channel: channelReducer,
         [twitchApi.reducerPath]: twitchApi.reducer,
     },
     // adding the api middleware enables caching, invalidation, polling and other features of `rtk-query`

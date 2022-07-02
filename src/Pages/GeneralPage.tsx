@@ -10,10 +10,10 @@ import NotFoundPage from "./NotFoundPage";
 
 export default function GeneralPage() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={"/clip-watcher-ui"}>
             <Routes>
-                <Route path="/clip-watcher-ui*" element={<MainPage/>}/>
                 <Route path="/" element={<MainPage/>}/>
+                <Route path="" element={<MainPage/>}/>
                 <Route path="/channel" element={<ChannelPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
