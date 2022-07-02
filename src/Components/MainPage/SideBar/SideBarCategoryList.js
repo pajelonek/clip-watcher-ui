@@ -5,18 +5,13 @@ import Typography from "@mui/material/Typography";
 import {useTopCategoryQuery} from "../../../Services/Redux/twitchApi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import {selectCategory, setCategory} from "../../../Services/Redux/filterSlice";
-import {useDispatch, useSelector} from "react-redux";
+import {clearState, setCategory} from "../../../Services/Redux/filterSlice";
+import {useDispatch} from "react-redux";
 import {clearCursorList} from "../../../Services/Redux/cursorSlice";
 import {clearPage} from "../../../Services/Redux/pageSlice";
 
-function replaceMaskUrlWithSize(urlWithMask, width, height) {
-    return urlWithMask.replace('{width}', width).replace('{height}', height);
-}
-
 export default function SideBarCategoryList() {
     const dispatch = useDispatch();
-    const category = useSelector(selectCategory);
 
     const {data, isUninitialized, isLoading} = useTopCategoryQuery('100');
 
@@ -38,17 +33,24 @@ export default function SideBarCategoryList() {
                     <FormControl sx={{m: 1, width: '100%', maxWidth: '90%', marginLeft: '0'}}>
                         <Autocomplete id="searchCategoryAutocomplete"
                                       options={!isUninitialized && !isLoading ? data.data : []} autoHighlight
+                                      defaultValue={{ name: 'Just Chatting' }}
                                       getOptionLabel={(option) => option.name}
-
                                       onChange={
-                                          (event, value) => {
-                                              dispatch(clearCursorList());
-                                              dispatch(clearPage());
-                                              dispatch(setCategory({
-                                                  id: value.id,
-                                                  name: value.name,
-                                                  box_art_url: value.box_art_url
-                                              }));
+                                          (event, value, reason) => {
+                                              if (reason === 'selectOption') {
+                                                  dispatch(clearCursorList());
+                                                  dispatch(clearPage());
+                                                  dispatch(setCategory({
+                                                      id: value.id,
+                                                      name: value.name,
+                                                      box_art_url: value.box_art_url
+                                                  }));
+                                              } else {
+                                                  dispatch(clearCursorList());
+                                                  dispatch(clearPage());
+                                                  dispatch(clearState());
+                                                  //event.currentTarget; // todo check how to change it after clear
+                                              }
                                           }
                                       }
 

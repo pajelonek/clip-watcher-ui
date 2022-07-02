@@ -15,7 +15,6 @@ import {selectPage, setPage} from "../../../Services/Redux/pageSlice";
 
 export default function ClipsPagination(props: any) {
     const page: number = useSelector(selectPage);
-    //const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(24);
     const dispatch = useDispatch();
     const savedCursor: CursorState = useSelector(selectCursor);
@@ -24,8 +23,6 @@ export default function ClipsPagination(props: any) {
         event: React.MouseEvent<HTMLButtonElement> | null,
         newPage: number,
     ) => {
-        console.log("new page = " + newPage);
-        console.log("old page = " + page);
         if (newPage > page) {
             dispatch(setDirectionOfCursor("after"));
             dispatch(setCursor({

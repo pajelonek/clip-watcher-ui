@@ -76,7 +76,16 @@ export const twitchApi = createApi({
                 });
             },
         }),
+        searchChannel: builder.query({
+            query: (query) => {
+                return ({
+                    url: '/channels/search?query=' + query,
+                    method: 'GET',
+                    headers: twitchApiHeaders
+                });
+            },
+        }),
     }),
 })
 
-export const {useGetClipsQuery, useSearchCategoryQuery, useTopCategoryQuery} = twitchApi
+export const {useGetClipsQuery, useSearchCategoryQuery, useTopCategoryQuery, useSearchChannelQuery} = twitchApi

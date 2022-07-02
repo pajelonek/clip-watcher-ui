@@ -41,6 +41,11 @@ export const filterSlice = createSlice({
         },
         setCursor(state, action) {
             state.cursor = action.payload
+        },
+        clearState(state) {
+            state.category = initialState.category
+            state.cursor = initialState.cursor
+            state.period = initialState.period
         }
     }
 })
@@ -49,6 +54,6 @@ export const selectPeriod = (state: any) => state.filter.period;
 export const selectCategory = (state: any) => state.filter.category;
 export const selectCursor = (state: any) => state.filter.cursor;
 
-export const {setPeriod, setCategory, setCursor} = filterSlice.actions
+export const {setPeriod, setCategory, setCursor, clearState} = filterSlice.actions
 
 export default filterSlice.reducer

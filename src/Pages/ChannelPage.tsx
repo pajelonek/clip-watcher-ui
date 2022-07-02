@@ -2,10 +2,9 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
-import TrendingBox from "../Components/MainPage/TrendingSection/TrendingBox";
 import ContentSection from "../Components/MainPage/ContentSection";
 
-export default function MainPage() {
+export default function ChannelPage() {
 
     return (
         <React.Fragment>
@@ -13,8 +12,7 @@ export default function MainPage() {
             {/* Header unit */}
             <Header/>
             {/* Trending Box unit */}
-            <TrendingBox/>
-            {/* Clips Container unit */}
+            <div><p>THIS IS CHANNEL PANEL OKEY?</p></div>
             <ContentSection/>
             {/* Footer */}
             <Footer/>

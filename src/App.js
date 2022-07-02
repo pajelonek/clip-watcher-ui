@@ -1,8 +1,8 @@
-import MainPage from "./Pages/MainPage";
 import * as React from "react";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {Provider} from 'react-redux';
 import {store} from "./Services/Redux/store";
+import GeneralPage from "./Pages/GeneralPage";
 
 export const ColorModeContext = React.createContext({
     toggleColorMode: () => {}
@@ -63,7 +63,7 @@ function App() {
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
                     <div className="App">
-                        <MainPage colorModeContext={ColorModeContext}/>
+                        <GeneralPage colorModeContext={ColorModeContext}/>
                     </div>
                 </ThemeProvider>
             </ColorModeContext.Provider>

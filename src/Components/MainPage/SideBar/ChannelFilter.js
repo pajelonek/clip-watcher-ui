@@ -2,6 +2,9 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
+import {useSearchChannelQuery} from "../../../Services/Redux/twitchApi";
+import {useEffect} from "react";
+import {AutocompleteValue} from "@mui/base/AutocompleteUnstyled/useAutocomplete";
 
 function sleep(delay = 0) {
     return new Promise((resolve) => {
@@ -12,9 +15,12 @@ function sleep(delay = 0) {
 export default function ChannelFilter() {
     const [open, setOpen] = React.useState(false);
     const [options, setOptions] = React.useState([]);
+    const [query, setQuery] = React.useState("");
+    const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useSearchChannelQuery(query);
+
     const loading = open && options.length === 0;
 
-    React.useEffect(() => {
+    useEffect(() => {
         let active = true;
 
         if (!loading) {
@@ -23,6 +29,7 @@ export default function ChannelFilter() {
 
         (async () => {
             await sleep(1e3); // For demo purposes.
+           setQuery("ok");
 
             if (active) {
                 setOptions([...topFilms]);
@@ -40,6 +47,20 @@ export default function ChannelFilter() {
         }
     }, [open]);
 
+    useEffect(() => {
+        const delayDebounceFn = setTimeout(() => {
+            console.log(query)
+            // Send Axios request here
+        }, 3000)
+
+        return () => clearTimeout(delayDebounceFn)
+    }, [query])
+
+    function onChange(value) {
+        console.log("set query to " + value);
+        setQuery(value);
+    }
+
     return (
         <Autocomplete
             id="asynchronous-demo"
@@ -54,6 +75,11 @@ export default function ChannelFilter() {
             getOptionLabel={(option) => option.title}
             options={options}
             loading={loading}
+            onChange={(e) => {
+                console.log("on change");
+                onChange(e.target.value);
+            }}
+            on
             sx={{width: '100%', maxWidth: '90%', marginLeft: "0"}}
             renderInput={(params) => (
                 <TextField
