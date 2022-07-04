@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import Grid from "@mui/material/Grid";
 import {Avatar, Paper} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Logo from "./twitch_icon.jpg";
+import Logo from "./twitch.png";
 
 export default function ChannelInformationPage() {
     const channel: Channel = useSelector(selectChannel);
@@ -12,9 +12,9 @@ export default function ChannelInformationPage() {
     const typographyLabelStyles = {}
 
     return (
-        <Grid container height={'45vh'} marginTop={'2%'}>
+        <Grid container marginTop={'2%'}>
             <Grid item xs={12} marginLeft={'2%'} marginRight={'2%'}>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} height={'100%'}>
                     <Grid item xs={3}>
                         <Paper sx={{height: '100%'}}>
                             <Grid container direction="column" alignItems="center" justifyContent="center"
@@ -71,7 +71,7 @@ export default function ChannelInformationPage() {
                         </Paper>
                     </Grid>
                     <Grid item xs={3}>
-                        <Grid container>
+                        <Grid container height={'100%'}>
                             <Grid item xs={12} justifyContent={"center"} textAlign={"center"}>
                                 <Paper sx={{height: '100%'}}>
                                     <Grid container>
@@ -84,7 +84,7 @@ export default function ChannelInformationPage() {
                                             <a target="_blank" rel="noopener noreferrer"
                                                href={"https://www.twitch.tv/" + channel.broadcaster_login}>
                                                 <img alt={"twitch icon"} src={Logo}
-                                                     style={{maxWidth: '65%', maxHeight: '65%'}}/>
+                                                     style={{maxWidth: '75%', maxHeight: '75%'}}/>
                                             </a>
                                         </Grid>
                                     </Grid>
