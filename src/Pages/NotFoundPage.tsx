@@ -12,5 +12,6 @@ export default function NotFoundPage() {
             {/* Footer */}
             <Footer/>
         </React.Fragment>
+        /*todo dodac tutaj jakis placeholder*/
     );
 }

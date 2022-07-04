@@ -11,16 +11,15 @@ export default function Clip(props) {
     const handleClose = () => setOpen(false);
     const handleMouseOver = () => console.log('mouse');
 
-    const style = {
+    const modalStyle = {
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '90%',
         height: '90%',
-        maxHeight: 800,
         bgcolor: 'background.paper',
-        border: '2px solid #000',
+        border: '3px solid #000',
         boxShadow: 24,
         p: 4
     };
@@ -38,26 +37,40 @@ export default function Clip(props) {
                             alt="clip image"
                         />
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="div" >
-                                {props.clip.broadcaster_name}
-                            </Typography>
-                            <Typography maxHeight={'15px'} variant="body2" color="text.secondary">
-                                {props.clip.title}
-                            </Typography>
+                            <Grid container height={'7vh'} justifyContent="center">
+                                <Grid item xs={12} width={'100%'} height={'70%'}>
+                                    <Typography noWrap={true}>
+                                        {props.clip.title}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={6} height={'30%'}>
+                                    <Typography variant="body2" color="text.secondary" textAlign={"left"}>
+                                        {props.clip.broadcaster_name}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={6} height={'30%'}>
+                                    <Typography variant="body2" color="text.secondary" textAlign={"right"}>
+                                        views: {props.clip.view_count}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
                         </CardContent>
                     </CardActionArea>
                 </Card>
-                <Modal open={open} onClose={handleClose}
+                <Modal open={open} onClose={handleClose} center animationDuration={1000}
                        aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-                    <Card sx={style}>
-                        <iframe
-                            title={props.clip.title}
-                            src={props.clip.embed_url + "&parent=" + window.location.hostname}
-                            width="50%"
-                            style={style}
-                            allowFullScreen>
-                        </iframe>
-                    </Card>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Card>
+                                <iframe
+                                    title={props.clip.title}
+                                    src={props.clip.embed_url + "&parent=" + window.location.hostname}
+                                    style={modalStyle}
+                                    allowFullScreen>
+                                </iframe>
+                            </Card>
+                        </Grid>
+                    </Grid>
                 </Modal>
             </Grid>
         </Grid>

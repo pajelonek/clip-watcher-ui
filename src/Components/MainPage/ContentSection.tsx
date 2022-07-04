@@ -46,23 +46,30 @@ export default function ContentSection() {
                         <SideBar/>
                     </Grid>
                     <Grid item xs={12} lg={9}>
-                        <Grid container marginLeft={'2%'} marginTop={'2%'}>
-                            <Grid item xs={2}>
-                                <Box
-                                    component="img"
-                                    sx={{
-                                        height: 233,
-                                        width: 150,
-                                        maxHeight: {xs: 233, md: 167},
-                                        maxWidth: {xs: 350, md: 250},
-                                    }}
-                                    alt="The house from the offer."
-                                    src={replaceMaskUrlWithSize(filterState.category.box_art_url, "500", "500")}
-                                />
-                            </Grid>
-                            <Grid item xs={10}>
-                                <Typography variant="h4" component="h2" style={{'position': 'relative', 'top': '40%', 'left': '0'}}>Most popular {filterState.category.name} clips
-                                    from {filterState.period}</Typography>
+                        <Grid container marginLeft={'2%'} marginTop={'2%'} width={'100%'}>
+                            <Grid item xs={12}>
+                                <Grid container marginLeft={'1%'}>
+                                    <Grid item xs={2}>
+                                        <Box
+                                            component="img"
+                                            sx={{
+                                                height: 233,
+                                                width: 150,
+                                                maxHeight: {xs: 233, md: 167},
+                                                maxWidth: {xs: 350, md: 250},
+                                            }}
+                                            alt="The house from the offer."
+                                            src={replaceMaskUrlWithSize(filterState.category.box_art_url, "500", "500")}
+                                        />
+                                    </Grid>
+                                    {/* todo zrob cos z tym jak channel wybieramy :/ niepotrzebne w paru przypadkach*/}
+                                    <Grid item xs={10}>
+                                        <Typography variant="h4" component="h2"
+                                                    style={{'position': 'relative', 'top': '40%', 'left': '0'}}>Most
+                                            popular {filterState.category.name} clips
+                                            from {filterState.period}</Typography>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                             <Grid item key={'clipsContainer'} xs={12}>
                                 <Grid container spacing={0}>
