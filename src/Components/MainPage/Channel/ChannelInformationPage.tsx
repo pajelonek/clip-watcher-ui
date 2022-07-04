@@ -8,31 +8,15 @@ import Logo from "./twitch_icon.jpg";
 
 export default function ChannelInformationPage() {
     const channel: Channel = useSelector(selectChannel);
-    const commonStyles = {
-        bgcolor: 'background.paper',
-        margin: 'auto',
-        marginTop: '2%',
-        height: '35vh',
-        width: 'auto'
-    };
 
-    const containerStyles = {
-        width: 'auto',
-        maxHeight: '45vh',
-        textAlign: 'center',
-        marginTop: '0'
-    };
-
-    const typographyLabelStyles = {
-        marginLeft: '2%'
-    }
+    const typographyLabelStyles = {}
 
     return (
-        <Grid container sx={{...containerStyles}} height={'45vh'} width={'100%'}>
-            <Grid item xs={12}>
-                <Grid container sx={{...commonStyles}} width={'100%'} spacing={4}>
+        <Grid container height={'45vh'} marginTop={'2%'}>
+            <Grid item xs={12} marginLeft={'2%'} marginRight={'2%'}>
+                <Grid container spacing={3}>
                     <Grid item xs={3}>
-                        <Paper sx={{width: '100%', height: '100%'}}>
+                        <Paper sx={{height: '100%'}}>
                             <Grid container direction="column" alignItems="center" justifyContent="center"
                                   style={{minHeight: '100%'}}>
                                 <Grid item xs={12} style={{
@@ -57,8 +41,8 @@ export default function ChannelInformationPage() {
                     <Grid item xs={6}>
                         <Paper sx={{height: '100%'}}>
                             <Grid container direction="column">
-                                <Grid item xs={12} justifyContent={"left"} textAlign={"left"}>
-                                    <Grid container spacing={3} marginTop={'2%'}>
+                                <Grid item xs={12} marginTop={'1%'} marginLeft={'2%'} justifyContent={"left"} textAlign={"left"}>
+                                    <Grid container spacing={3}>
                                         <Grid item xs={12}>
                                             <Typography noWrap style={{...typographyLabelStyles, maxWidth: '100%'}}
                                                         variant="h4" component="h2">
@@ -87,34 +71,26 @@ export default function ChannelInformationPage() {
                         </Paper>
                     </Grid>
                     <Grid item xs={3}>
-                        <Paper sx={{height: '100%'}}>
-                            <Grid container direction="column">
-                                <Grid item xs={12} justifyContent={"center"} textAlign={"center"}>
+                        <Grid container>
+                            <Grid item xs={12} justifyContent={"center"} textAlign={"center"}>
+                                <Paper sx={{height: '100%'}}>
                                     <Grid container>
-                                        <Grid item xs={12}>
+                                        <Grid item xs={12} marginTop={'2%'}>
                                             <Typography style={{...typographyLabelStyles}} variant="h4" component="h2">
                                                 Visit channel on Twitch:
                                             </Typography>
                                         </Grid>
-                                        <Grid item xs={12}>
+                                        <Grid item xs={12} marginTop={'5%'}>
                                             <a target="_blank" rel="noopener noreferrer"
                                                href={"https://www.twitch.tv/" + channel.broadcaster_login}>
                                                 <img alt={"twitch icon"} src={Logo}
-                                                     style={{maxWidth: '70%', maxHeight: '70%'}}/>
+                                                     style={{maxWidth: '65%', maxHeight: '65%'}}/>
                                             </a>
                                         </Grid>
                                     </Grid>
-                                </Grid>
+                                </Paper>
                             </Grid>
-                        </Paper>
-                    </Grid>
-
-                    <Grid item xs={3}>
-                        <Paper></Paper>
-                    </Grid>
-                    <Grid item xs={6}> <Paper></Paper>
-                    </Grid>
-                    <Grid item xs={3}> <Paper></Paper>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
