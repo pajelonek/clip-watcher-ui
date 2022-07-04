@@ -33,7 +33,7 @@ export default function SideBarCategoryList() {
                     <FormControl sx={{m: 1, width: '100%', maxWidth: '90%', marginLeft: '0'}}>
                         <Autocomplete id="searchCategoryAutocomplete"
                                       options={!isUninitialized && !isLoading ? data.data : []} autoHighlight
-                                      defaultValue={{ name: 'Just Chatting' }}
+                                      defaultValue={{name: 'Just Chatting'}}
                                       getOptionLabel={(option) => option.name}
                                       onChange={
                                           (event, value, reason) => {
@@ -45,11 +45,13 @@ export default function SideBarCategoryList() {
                                                       name: value.name,
                                                       box_art_url: value.box_art_url
                                                   }));
+                                                  //todo deleted earlier selectedChannelIfSelected
                                               } else {
                                                   dispatch(clearCursorList());
                                                   dispatch(clearPage());
                                                   dispatch(clearState());
                                                   //event.currentTarget; // todo check how to change it after clear
+                                                  // todo after clicking channel, you need to remove current category from UI filter
                                               }
                                           }
                                       }

@@ -3,6 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
 import ContentSection from "../Components/MainPage/ContentSection";
+import ChannelInformationPage from "../Components/MainPage/Channel/ChannelInformationPage";
 
 export default function ChannelPage() {
 
@@ -11,8 +12,9 @@ export default function ChannelPage() {
             <CssBaseline/>
             {/* Header unit */}
             <Header/>
-            {/* Trending Box unit */}
-            <div><p>THIS IS CHANNEL PANEL OKEY?</p></div>
+            {/* Channel Information unit */}
+            <ChannelInformationPage/>
+            {/* Clips Container unit */}
             <ContentSection/>
             {/* Footer */}
             <Footer/>

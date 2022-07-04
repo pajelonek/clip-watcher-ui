@@ -45,7 +45,8 @@ export const twitchApi = createApi({
                     method: 'POST',
                     headers: twitchApiHeaders,
                     body: {
-                        "gameId": filterState.category.id,
+                        "gameId": filterState.channel.isSelected ? null : filterState.category.id,
+                        "broadcasterId": filterState.channel.isSelected ? filterState.channel.selectedChannel.id : null,
                         "first": "24",
                         "endedAt": new Date().toISOString(),
                         "startedAt": resolveDate(filterState.period).toISOString(),

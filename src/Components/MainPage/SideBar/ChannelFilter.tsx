@@ -5,9 +5,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import {useSearchChannelQuery} from "../../../Services/Redux/twitchApi";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {Channel, setIsSelected, setSelectedChannel} from "../../../Services/Redux/channelSlice";
 import {debounce} from "../../../Utils/channelUtils";
 import {useNavigate} from "react-router-dom";
+import {Channel, setIsSelected, setSelectedChannel} from "../../../Services/Redux/filterSlice";
 
 export interface ChannelOptionLabel {
     display_name: string
@@ -24,14 +24,12 @@ export default function ChannelFilter() {
 
     if (data && data.data != null && data.data !== options) {
         if (!isLoading && !isUninitialized && !isFetching && isSuccess) {
-            console.log("setting options");
             setOptions(data.data);
         }
     }
 
     // todo we can add loading as earlier when times comes
     // const loading = open && options.length === 0;
-
     // useEffect(() => {
     //     let active = true;
     //
@@ -80,11 +78,16 @@ export default function ChannelFilter() {
         if (!open) {
             setOptions([]);
         }
-    }, [open]);
+    }, [open]); // todo search results doesnt dissapear after not chosing one, popraw
 
     function setNewChannel(newChannelId: number) {
         dispatch(setSelectedChannel(options[newChannelId] as Channel));
         dispatch(setIsSelected(true));
+        // todo clear previous data which may cause troubles like cursor and so on
+        // todo after clicking channel, you need to put channel name into the UI
+        // todo after removing channel, get back to default category
+        // todo after clicking channel reset period, cursor and so on
+        // todo add to this filter channel image as in categories
         history("/channel");
     }
 
@@ -104,7 +107,7 @@ export default function ChannelFilter() {
             onChange={(e: any) => setNewChannel(e.target.value)}
             // loading={loading}
             onInput={(e: any) => setQuery(e.target.value)}
-            sx={{width: '100%', maxWidth: '90%', marginLeft: "0"}}
+            sx={{width: '100%', maxWidth: '100%', marginLeft: "0"}}
             renderInput={(params) => (
                 <TextField
                     {...params}

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Box, Typography} from "@mui/material";
-import {FilterState, selectCategory, selectPeriod} from "../../../Services/Redux/filterSlice";
+import {selectCategory, selectPeriod} from "../../../Services/Redux/filterSlice";
 import {useSelector} from "react-redux";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,12 +9,12 @@ import ListItemText from '@mui/material/ListItemText';
 
 export default function SideBarFilterList() {
 
-    const filterState: FilterState = {
+    const filterState = {
         period: useSelector(selectPeriod),
         category: useSelector(selectCategory),
         cursor: {
             value: ''
-        }
+        },
     };
 
     return (

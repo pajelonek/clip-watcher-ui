@@ -33,7 +33,6 @@ export const cursorSlice = createSlice({
             const exists = state.cursorList.some(cursor => (cursor === action.payload));
             if (!exists && action.payload != null) {
                 state.cursorList[state.currentPage + 1] = action.payload;
-                state.cursorList.forEach(cursor => (console.log(cursor)));
             }
         },
         goForwardWithCursor(state) {

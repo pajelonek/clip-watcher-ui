@@ -53,7 +53,7 @@ export default function ClipsPagination(props: any) {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-
+ // todo jak nie ma klipow to nie ma oblugi, trzeba cos dodac gdy 1) klipow w ogole nie ma, 2) cursor się blokuje
     return (
         !props.loadingClips ?
             <Grid item key={'pagination'} xs={12} marginTop={'3%'}>

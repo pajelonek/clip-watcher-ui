@@ -49,7 +49,14 @@ export default function SideBar() {
                     }} xs={12} sm={6} md={3} lg={12}>
                         <SideBarCategoryList/>
                     </Grid>
-                    <Grid item key={'ChannelList'} xs={12} sm={6} md={3} lg={12}>
+                    <Grid item key={'ChannelList'} sx={{
+                        '@media (max-width: 1200px)' : {
+                            borderRight: (theme) => `4px solid ${theme.palette.trendingBoxColor.main}`
+                        },
+                        '@media (min-width: 1200px)' : {
+                            borderBottom: (theme) => `4px solid ${theme.palette.trendingBoxColor.main}`
+                        }
+                    }} xs={12} sm={6} md={3} lg={12}>
                         <SideBarChannelList/>
                     </Grid>
                 </Grid>

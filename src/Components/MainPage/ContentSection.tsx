@@ -5,7 +5,13 @@ import ClipsPagination from "./ClipsSection/ClipsPagination";
 import SideBar from "./SideBar/SideBar";
 import {useGetClipsQuery} from "../../Services/Redux/twitchApi";
 import {useDispatch, useSelector} from "react-redux";
-import {FilterState, selectCategory, selectCursor, selectPeriod} from "../../Services/Redux/filterSlice";
+import {
+    FilterState,
+    selectCategory,
+    selectChannelState,
+    selectCursor,
+    selectPeriod
+} from "../../Services/Redux/filterSlice";
 import Typography from "@mui/material/Typography";
 import {addNewCursorToContext} from "../../Services/Redux/cursorSlice";
 import {Box} from "@mui/material";
@@ -20,7 +26,8 @@ export default function ContentSection() {
     const filterState: FilterState = {
         period: useSelector(selectPeriod),
         category: useSelector(selectCategory),
-        cursor: useSelector(selectCursor)
+        cursor: useSelector(selectCursor),
+        channel: useSelector(selectChannelState)
     };
 
     const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);

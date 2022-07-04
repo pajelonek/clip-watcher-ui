@@ -8,7 +8,7 @@ export default function SideBarChannelList() {
         <Box sx={{
             display: 'flex', flexWrap: 'wrap',
             p: 1, m: 1,
-            maxWidth: 300, borderRadius: 1
+            maxWidth: '90%', borderRadius: 1
         }}>
             <Grid container>
                 <Grid item key={'channelLabel'} xs={12}>

@@ -1,7 +1,9 @@
 {
   "name": "clip-watcher-ui",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "private": true,
+  "author": "Pawel Jelonek",
+  "description": "UI for clip-watcher project",
   "homepage": "https://pajelonek.github.io/clip-watcher-ui",
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -51,5 +53,8 @@
       "last 1 safari version",
       "last 1 opera version"
     ]
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0"
   }
 }
