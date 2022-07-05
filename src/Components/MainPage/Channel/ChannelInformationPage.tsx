@@ -75,9 +75,9 @@ export default function ChannelInformationPage() {
                             <Grid item xs={12} justifyContent={"center"} textAlign={"center"}>
                                 <Paper sx={{height: '100%'}}>
                                     <Grid container>
-                                        <Grid item xs={12} marginTop={'2%'}>
+                                        <Grid item xs={12} marginTop={'2%'} alignItems={"center"} justifyContent={"center"}>
                                             <Typography style={{...typographyLabelStyles}} variant="h4" component="h2">
-                                                Visit channel on Twitch:
+                                                Visit channel:
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12} marginTop={'5%'}>
