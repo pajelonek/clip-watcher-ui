@@ -5,19 +5,10 @@ import {Paper} from "@mui/material";
 import Carousel from 'react-material-ui-carousel';
 import {useTopStreamsQuery} from "../../../Services/Redux/twitchApi";
 import ReactTwitchEmbedVideo from "react-twitch-embed-video"
-import {useState} from "react";
 
 export default function TrendingBox() {
     const {data, isLoading, isUninitialized, isFetching, isSuccess} = useTopStreamsQuery();
 
-    // {/*<Grid item xs={12}>*/}
-    // {/*<Carousel navButtonsAlwaysVisible={true} swipe={false} autoPlay={false}>*/}
-    // {/*    {*/}
-    // {/*        data.data.map((item, i) => <SingleFrameInCarousel key={i} item={item}/>)*/}
-    // {/*    }*/}
-    // {/*</Carousel>*/}
-    // {/*/!*TODO placeholder*!/*/}
-    // {/*</Grid>*/}
     return (
         data && !isLoading && !isUninitialized && !isFetching && isSuccess ?
         <Paper variant="outlined" square

@@ -4,7 +4,7 @@ import ClipsContainer from "./ClipsSection/ClipsContainer";
 import ClipsPagination from "./ClipsSection/ClipsPagination";
 import SideBar from "./SideBar/SideBar";
 import {useGetClipsQuery} from "../../Services/Redux/twitchApi";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {
     FilterState,
     selectCategory,
@@ -13,7 +13,6 @@ import {
     selectPeriod
 } from "../../Services/Redux/filterSlice";
 import Typography from "@mui/material/Typography";
-import {addNewCursorToContext} from "../../Services/Redux/cursorSlice";
 import {Box} from "@mui/material";
 
 function replaceMaskUrlWithSize(urlWithMask: string, width: string, height: string) {
@@ -21,7 +20,6 @@ function replaceMaskUrlWithSize(urlWithMask: string, width: string, height: stri
 }
 
 export default function ContentSection() {
-    const dispatch = useDispatch();
 
     const filterState: FilterState = {
         period: useSelector(selectPeriod),
@@ -31,12 +29,6 @@ export default function ContentSection() {
     };
 
     const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);
-
-    if (data) {
-        if (!isLoading && !isUninitialized && !isFetching && isSuccess) {
-            dispatch(addNewCursorToContext(data.pagination.cursor));
-        }
-    }
 
     return (
         <Grid container>
@@ -73,14 +65,15 @@ export default function ContentSection() {
                             </Grid>
                             <Grid item key={'clipsContainer'} xs={12}>
                                 <Grid container spacing={0}>
-                                    <ClipsContainer clips={data?.data} loadingClips={isFetching} isLoading={isLoading}
+                                    <ClipsContainer clips={data?.data} cursor={data?.pagination?.cursor} loadingClips={isFetching} isLoading={isLoading} isSuccess={isSuccess}
                                                     isUninitialized={isUninitialized} hasError={error}/>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item key={'menu'} xs={12}>
-                        <ClipsPagination loadingClips={isFetching}/>
+                        <ClipsPagination cursor={data?.pagination?.cursor} isLoading={isLoading} isSuccess={isSuccess}
+                                         isUninitialized={isUninitialized} hasError={error} loadingClips={isFetching}/>
                     </Grid>
                 </Grid>
             </Grid>

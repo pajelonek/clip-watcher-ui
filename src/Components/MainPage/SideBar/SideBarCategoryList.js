@@ -35,8 +35,9 @@ export default function SideBarCategoryList() {
                                       options={!isUninitialized && !isLoading ? data.data : []} autoHighlight
                                       defaultValue={{name: 'Just Chatting'}}
                                       getOptionLabel={(option) => option.name}
+                                      isOptionEqualToValue={(option, value) => option.name === value.name}
                                       onChange={
-                                          (event, value, reason) => {
+                                          (_event, value, reason) => {
                                               if (reason === 'selectOption') {
                                                   dispatch(clearCursorList());
                                                   dispatch(clearPage());
@@ -50,7 +51,8 @@ export default function SideBarCategoryList() {
                                                   dispatch(clearCursorList());
                                                   dispatch(clearPage());
                                                   dispatch(clearState());
-                                                  //event.currentTarget; // todo check how to change it after clear
+                                                  //event.currentTarget;
+                                                  // todo check how to change it after clear
                                                   // todo after clicking channel, you need to remove current category from UI filter
                                               }
                                           }

@@ -1,6 +1,6 @@
 {
   "name": "clip-watcher-ui",
-  "version": "0.1.33",
+  "version": "1.0.0",
   "private": true,
   "author": "Pawel Jelonek",
   "description": "UI for clip-watcher project",

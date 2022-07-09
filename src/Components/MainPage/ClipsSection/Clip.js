@@ -9,7 +9,6 @@ export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleMouseOver = () => console.log('mouse');
 
     const modalStyle = {
         position: 'absolute',
@@ -29,7 +28,6 @@ export default function Clip(props) {
             <Grid item xs={11.5}>
                 <Card sx={{width: '100%', height: '80%'}}>
                     <CardActionArea
-                        onMouseOver={handleMouseOver}
                         onClick={handleOpen}>
                         <CardMedia
                             component="img"
@@ -57,7 +55,7 @@ export default function Clip(props) {
                         </CardContent>
                     </CardActionArea>
                 </Card>
-                <Modal open={open} onClose={handleClose} center animationDuration={1000}
+                <Modal open={open} onClose={handleClose} center
                        aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Grid container>
                         <Grid item xs={12}>
@@ -66,7 +64,8 @@ export default function Clip(props) {
                                     title={props.clip.title}
                                     src={props.clip.embed_url + "&parent=" + window.location.hostname}
                                     style={modalStyle}
-                                    allowFullScreen>
+                                    allow={'fullscreen'}
+                                    >
                                 </iframe>
                             </Card>
                         </Grid>

@@ -9,7 +9,7 @@ import {
     selectCursor,
     goBackWithCursor,
     setDirectionOfCursor,
-    goForwardWithCursor
+    goForwardWithCursor, addNewCursorToContext
 } from "../../../Services/Redux/cursorSlice";
 import {selectPage, setPage} from "../../../Services/Redux/pageSlice";
 
@@ -19,8 +19,13 @@ export default function ClipsPagination(props: any) {
     const dispatch = useDispatch();
     const savedCursor: CursorState = useSelector(selectCursor);
 
+    if (!props.loadingClips && !props.isUninitialized && !props.isFetching && props.isSuccess) {
+        dispatch(addNewCursorToContext(props.cursor));
+    }
+
+
     const handleChangePage = (
-        event: React.MouseEvent<HTMLButtonElement> | null,
+        _event: React.MouseEvent<HTMLButtonElement> | null,
         newPage: number,
     ) => {
         if (newPage > page) {
