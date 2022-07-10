@@ -6,7 +6,7 @@ export interface CursorState {
     direction: string
 }
 
-const initialState = {
+export const cursorSliceInitialState = {
     currentPage: 0,
     cursorList: [""],
     direction: 'after'
@@ -14,20 +14,16 @@ const initialState = {
 
 export const cursorSlice = createSlice({
     name: 'cursor',
-    initialState,
+    initialState: cursorSliceInitialState,
     reducers: {
         setCursor(state, action) {
             state.currentPage = action.payload.currentPage;
             state.cursorList = action.payload.cursorList;
         },
         clearCursorList(state) {
-            state.currentPage = initialState.currentPage;
-            state.cursorList = initialState.cursorList;
-            state.direction = initialState.direction;
-        },
-        setNextCursorForPage(state, action) {
-            state.currentPage = initialState.currentPage;
-            state.cursorList = action.payload;
+            state.currentPage = cursorSliceInitialState.currentPage;
+            state.cursorList = cursorSliceInitialState.cursorList;
+            state.direction = cursorSliceInitialState.direction;
         },
         addNewCursorToContext(state, action) {
             const exists = state.cursorList.some(cursor => (cursor === action.payload));
@@ -39,7 +35,11 @@ export const cursorSlice = createSlice({
             state.currentPage = state.currentPage + 1;
         },
         goBackWithCursor(state) {
-            state.currentPage = state.currentPage - 1;
+            if (state.currentPage - 1 >= 0) {
+                state.currentPage = state.currentPage - 1;
+            } else {
+                state.currentPage = 0;
+            }
         },
         setDirectionOfCursor(state, action) {
             state.direction = action.payload;
@@ -49,6 +49,13 @@ export const cursorSlice = createSlice({
 
 export const selectCursor = (state: any) => state.cursor;
 
-export const {addNewCursorToContext, goBackWithCursor, setDirectionOfCursor, goForwardWithCursor, clearCursorList} = cursorSlice.actions
+export const {
+    setCursor,
+    addNewCursorToContext,
+    goBackWithCursor,
+    setDirectionOfCursor,
+    goForwardWithCursor,
+    clearCursorList
+} = cursorSlice.actions
 
 export default cursorSlice.reducer
