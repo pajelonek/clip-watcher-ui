@@ -62,7 +62,7 @@ function App() {
         <Provider store={store}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
-                    <div className="App">
+                    <div className="App" id={"app-container"} data-testid={"app-container"}>
                         <GeneralPage colorModeContext={ColorModeContext}/>
                     </div>
                 </ThemeProvider>
