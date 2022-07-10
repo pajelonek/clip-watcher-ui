@@ -1,7 +1,3 @@
 ignore-failures:
   javascript:
-    - react-dom
-    - angular
-
-  java:
     - jest-sonar-reporter
