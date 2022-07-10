@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import BouncingDotsLoader from './BouncingDotsLoader';
 
-describe('renders header component', () => {
+describe('renders bouncing dots loader component', () => {
 
     it('should get element by Id', () => {
         render(<BouncingDotsLoader data-testid={"bouncingDotsElement"}/>);

@@ -13,14 +13,15 @@ export interface ChannelOptionLabel {
     display_name: string
 }
 
-export default function ChannelFilter() {
+export default function ChannelFilter(props: any) {
     const [open, setOpen] = React.useState(false);
     const [options, setOptions] = React.useState([]);
     const [query, setQuery] = React.useState("");
     const [searchParam, setSearchParam] = React.useState("");
-    const {data, isLoading, isUninitialized, isFetching, isSuccess} = useSearchChannelQuery(searchParam);
     const dispatch = useDispatch();
     let history = useNavigate();
+
+    const {data, isLoading, isUninitialized, isFetching, isSuccess} = useSearchChannelQuery(searchParam);
 
     if (data && data.data != null && data.data !== options) {
         if (!isLoading && !isUninitialized && !isFetching && isSuccess) {
@@ -93,7 +94,7 @@ export default function ChannelFilter() {
 
     return (
         <Autocomplete
-            id="asynchronous-demo"
+            id="sideBar-channelFilterAutocomplete"
             open={open}
             onOpen={() => {
                 setOpen(true);
@@ -124,6 +125,7 @@ export default function ChannelFilter() {
                     }}
                 />
             )}
+            {...props}
         />
     );
 }

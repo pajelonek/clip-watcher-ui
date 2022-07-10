@@ -1,9 +1,9 @@
 import Grid from "@mui/material/Grid";
 import * as React from "react";
 
-export default function FiltersList() {
+export default function FiltersList(props: any) {
     return (
-        <Grid item key={'FiltersList'} xs={12}>
+        <Grid id={"sidebar-FiltersList-Label"} item xs={12} {...props}>
             Filters:
         </Grid>
     );

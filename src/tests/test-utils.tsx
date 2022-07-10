@@ -4,12 +4,13 @@ import type {RenderOptions} from '@testing-library/react'
 import {configureStore} from '@reduxjs/toolkit'
 import type {PreloadedState} from '@reduxjs/toolkit'
 import {Provider} from 'react-redux'
-// As a basic setup, import your same slice reducers
+
 import {RootState} from "@reduxjs/toolkit/dist/query/core/apiState";
 import filterReducer from "../Services/Redux/filterSlice";
 import cursorReducer from "../Services/Redux/cursorSlice";
 import pageReducer from "../Services/Redux/pageSlice";
 import {twitchApi} from "../Services/Redux/twitchApi";
+import {BrowserRouter} from "react-router-dom";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
@@ -29,15 +30,17 @@ export function renderWithProviders(
                 cursor: cursorReducer,
                 page: pageReducer,
                 [twitchApi.reducerPath]: twitchApi.reducer,
-            }, preloadedState
+            },
+            middleware: (getDefaultMiddleware) =>
+                getDefaultMiddleware().concat(twitchApi.middleware),
+            preloadedState
         }),
         ...renderOptions
     }: ExtendedRenderOptions = {}
 ) {
     function Wrapper({children}: PropsWithChildren<{}>): JSX.Element {
-        return <Provider store={store}>{children}</Provider>
+        return <BrowserRouter><Provider store={store}>{children}</Provider></BrowserRouter>
     }
 
-    // Return an object with the store and all of RTL's query functions
     return {store, ...render(ui, {wrapper: Wrapper, ...renderOptions})}
 }

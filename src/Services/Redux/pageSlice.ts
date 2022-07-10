@@ -4,19 +4,19 @@ export interface PageState {
     value: number
 }
 
-const initialState = {
+export const pagesSliceInitialState = {
     value: 0,
 } as PageState;
 
 export const pagesSlice = createSlice({
     name: 'pages',
-    initialState,
+    initialState: pagesSliceInitialState,
     reducers: {
         setPage(state, action) {
             state.value = action.payload
         },
         clearPage(state) {
-            state.value = initialState.value
+            state.value = pagesSliceInitialState.value
         }
     }
 })
