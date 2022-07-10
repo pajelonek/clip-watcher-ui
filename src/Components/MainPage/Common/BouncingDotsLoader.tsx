@@ -1,9 +1,9 @@
 import React from "react";
 import "./BouncingDotsLoader.css";
 
-const BouncingDotsLoader = () => {
+const BouncingDotsLoader = (props: any) => {
     return (
-        <div className="bouncing-loader">
+        <div id={"bouncingDotsElement"} className="bouncing-loader" {...props}>
             <div/>
             <div/>
             <div/>

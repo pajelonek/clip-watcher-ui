@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 
+// todo fix ts-ignore, check those styles
+// todo przyda sie jakis zamiennik jak nie dziala thumbnail + walidacja if exists
+
 export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -24,7 +27,7 @@ export default function Clip(props) {
     };
 
     return (
-        <Grid container marginTop={'3%'} spacing={1} direction="row" justifyContent="center" alignItems="center">
+        <Grid id={"clipsContainer-clipComponent"} container marginTop={'3%'} spacing={1} direction="row" justifyContent="center" alignItems="center" {...props}>
             <Grid item xs={11.5}>
                 <Card sx={{width: '100%', height: '80%'}}>
                     <CardActionArea
@@ -55,7 +58,7 @@ export default function Clip(props) {
                         </CardContent>
                     </CardActionArea>
                 </Card>
-                <Modal open={open} onClose={handleClose} center
+                <Modal open={open} onClose={handleClose}
                        aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Grid container>
                         <Grid item xs={12}>

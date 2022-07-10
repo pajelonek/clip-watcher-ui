@@ -9,8 +9,8 @@ import {useTheme} from "@mui/material/styles";
 import {ColorModeContext} from "../../App";
 import {useNavigate} from "react-router-dom";
 import Grid from "@mui/material/Grid";
-
-export default function Header() {
+// todo add some sort of provider for theme, to make test easier
+export default function Header(props: any) {
     const theme = useTheme();
     const colorMode = React.useContext(ColorModeContext);
     let history = useNavigate();
@@ -32,10 +32,11 @@ export default function Header() {
     return (
         <AppBar
             position="static"
+            id={"header-AppBar"}
             sx={{
                 bgcolor: (theme: any) => `${theme.palette.navbar.main}`,
                 borderBottom: (theme) => `1.5px solid ${theme.palette.divider}`
-            }}>
+            }} {...props}>
             {/*// todo after navigation to main page, reset context*/}
             <Toolbar>
                 <Grid container>

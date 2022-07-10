@@ -64,10 +64,8 @@ export default function ContentSection() {
                                 </Grid>
                             </Grid>
                             <Grid item key={'clipsContainer'} xs={12}>
-                                <Grid container spacing={0}>
-                                    <ClipsContainer clips={data?.data} cursor={data?.pagination?.cursor} loadingClips={isFetching} isLoading={isLoading} isSuccess={isSuccess}
+                                <ClipsContainer clips={data?.data} cursor={data?.pagination?.cursor} loadingClips={isFetching} isLoading={isLoading} isSuccess={isSuccess}
                                                     isUninitialized={isUninitialized} hasError={error}/>
-                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
