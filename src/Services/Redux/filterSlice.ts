@@ -37,7 +37,7 @@ export interface Channel {
     _live: boolean | null
 }
 
-const initialState = {
+export const filterSliceInitialState = {
     period: 'today',
     category: {
         id: 509658,
@@ -68,33 +68,33 @@ const initialState = {
 
 export const filterSlice = createSlice({
     name: 'filters',
-    initialState,
+    initialState: filterSliceInitialState,
     reducers: {
         setPeriod(state, action) {
-            state.period = action.payload
-            state.cursor = initialState.cursor
+            state.period = action.payload;
+            state.cursor = filterSliceInitialState.cursor;
         },
         setCategory(state, action) {
-            state.category = action.payload
-            state.cursor = initialState.cursor
+            state.category = action.payload;
+            state.cursor = filterSliceInitialState.cursor;
         },
         setCursor(state, action) {
-            state.cursor = action.payload
+            state.cursor = action.payload;
         },
         clearState(state) {
-            state.category = initialState.category
-            state.cursor = initialState.cursor
-            state.period = initialState.period
+            state.category = filterSliceInitialState.category;
+            state.cursor = filterSliceInitialState.cursor;
+            state.period = filterSliceInitialState.period;
         },
         setChannelState(state, action) {
-            state.channel.isSelected = action.payload.isSelecte
-            state.channel.selectedChannel = action.payload.channel
+            state.channel.isSelected = action.payload.isSelected;
+            state.channel.selectedChannel = action.payload.channel;
         },
         setIsSelected(state, action) {
-            state.channel.isSelected = action.payload
+            state.channel.isSelected = action.payload;
         },
         setSelectedChannel(state, action) {
-            state.channel.selectedChannel = action.payload
+            state.channel.selectedChannel = action.payload;
         },
     }
 })
