@@ -6,10 +6,10 @@ import type {PreloadedState} from '@reduxjs/toolkit'
 import {Provider} from 'react-redux'
 
 import {RootState} from "@reduxjs/toolkit/dist/query/core/apiState";
-import filterReducer from "../Services/Redux/filterSlice";
-import cursorReducer from "../Services/Redux/cursorSlice";
-import pageReducer from "../Services/Redux/pageSlice";
-import {twitchApi} from "../Services/Redux/twitchApi";
+import filterReducer from "../Services/Reducers/filterSlice";
+import cursorReducer from "../Services/Reducers/cursorSlice";
+import pageReducer from "../Services/Reducers/pageSlice";
+import {twitchApi} from "../Middleware/twitchApi";
 import {BrowserRouter} from "react-router-dom";
 
 // This type interface extends the default options for render from RTL, as well

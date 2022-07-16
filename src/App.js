@@ -1,8 +1,8 @@
 import * as React from "react";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {Provider} from 'react-redux';
-import {store} from "./Services/Redux/store";
-import GeneralPage from "./Pages/GeneralPage";
+import {store} from "./Middleware/store";
+import GeneralPage from "./Routes/GeneralPage";
 
 export const ColorModeContext = React.createContext({
     toggleColorMode: () => {}

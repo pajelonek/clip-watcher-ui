@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Box, Typography} from "@mui/material";
-import {selectCategory, selectPeriod} from "../../../Services/Redux/filterSlice";
+import {selectCategory, selectPeriod} from "../../Services/Reducers/filterSlice";
 import {useSelector} from "react-redux";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';

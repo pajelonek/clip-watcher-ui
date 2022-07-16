@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import ClipsContainer from './ClipsContainer';
-import {MockComponent} from "../../../tests/MockComponent";
+import {MockComponent} from "../../tests/MockComponent";
 
 describe('renders header component', () => {
 

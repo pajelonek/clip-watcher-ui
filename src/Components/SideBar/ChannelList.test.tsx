@@ -1,7 +1,7 @@
 import React from 'react';
 import {screen} from '@testing-library/react';
 import ChannelList from './ChannelList';
-import {renderWithProviders} from "../../../tests/test-utils";
+import {renderWithProviders} from "../../tests/test-utils";
 
 describe('renders channel list component', () => {
 

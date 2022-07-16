@@ -3,15 +3,15 @@ import Stack from '@mui/material/Stack';
 import Grid from "@mui/material/Grid";
 import {TablePagination} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {setCursor} from "../../../Services/Redux/filterSlice";
+import {setCursor} from "../../Services/Reducers/filterSlice";
 import {
     CursorState,
     selectCursor,
     goBackWithCursor,
     setDirectionOfCursor,
     goForwardWithCursor, addNewCursorToContext
-} from "../../../Services/Redux/cursorSlice";
-import {selectPage, setPage} from "../../../Services/Redux/pageSlice";
+} from "../../Services/Reducers/cursorSlice";
+import {selectPage, setPage} from "../../Services/Reducers/pageSlice";
 
 export default function ClipsPagination(props: any) {
     const page: number = useSelector(selectPage);

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import Header from "../Components/Common/Header";
-import Footer from "../Components/Common/Footer";
+import Header from "../Layouts/Header/Header";
+import Footer from "../Layouts/Footer/Footer";
 import ContentSection from "../Components/MainPage/ContentSection";
-import ChannelInformationPage from "../Components/MainPage/Channel/ChannelInformationPage";
+import ChannelInformationPage from "../Components/Channel/ChannelInformationPage";
 
 export default function ChannelPage() {
 

@@ -1,9 +1,9 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import ClipsContainer from "./ClipsSection/ClipsContainer";
-import ClipsPagination from "./ClipsSection/ClipsPagination";
-import SideBar from "./SideBar/SideBar";
-import {useGetClipsQuery} from "../../Services/Redux/twitchApi";
+import ClipsContainer from "../ClipsSection/ClipsContainer";
+import ClipsPagination from "../ClipsSection/ClipsPagination";
+import SideBar from "../SideBar/SideBar";
+import {useGetClipsQuery} from "../../Middleware/twitchApi";
 import {useSelector} from "react-redux";
 import {
     FilterState,
@@ -11,7 +11,7 @@ import {
     selectChannelState,
     selectCursor,
     selectPeriod
-} from "../../Services/Redux/filterSlice";
+} from "../../Services/Reducers/filterSlice";
 import Typography from "@mui/material/Typography";
 import {Box} from "@mui/material";
 

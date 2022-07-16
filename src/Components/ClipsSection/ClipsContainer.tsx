@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Clip from "./Clip";
-import BouncingDotsLoader from "../Common/BouncingDotsLoader";
+import BouncingDotsLoader from "../BouncingDotsLoader/BouncingDotsLoader";
 import * as React from "react";
 
 export default function ClipsContainer(props: any) {

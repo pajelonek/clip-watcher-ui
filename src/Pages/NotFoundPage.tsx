@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import Footer from "../Components/Common/Footer";
+import Footer from "../Layouts/Footer/Footer";
 
 export default function NotFoundPage() {
     return (

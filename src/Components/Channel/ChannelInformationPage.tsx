@@ -1,10 +1,10 @@
 import * as React from "react";
-import {Channel, selectChannel} from "../../../Services/Redux/filterSlice";
+import {Channel, selectChannel} from "../../Services/Reducers/filterSlice";
 import {useSelector} from "react-redux";
 import Grid from "@mui/material/Grid";
 import {Avatar, Paper} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Logo from "../../../img/twitch.png";
+import Logo from "../../Assets/Images/twitch.png";
 
 // todo refactor na mniejsze
 export default function ChannelInformationPage(props: any) {

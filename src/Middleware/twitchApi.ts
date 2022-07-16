@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {FilterState} from "./filterSlice";
+import {FilterState} from "../Services/Reducers/filterSlice";
 
 function resolveDate(period: string) : Date {
     let date = new Date();

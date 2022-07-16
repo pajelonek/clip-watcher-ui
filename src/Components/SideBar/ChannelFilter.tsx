@@ -2,12 +2,12 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
-import {useSearchChannelQuery} from "../../../Services/Redux/twitchApi";
+import {useSearchChannelQuery} from "../../Middleware/twitchApi";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {debounce} from "../../../Utils/channelUtils";
+import {debounce} from "../../Services/Utils/channelUtils";
 import {useNavigate} from "react-router-dom";
-import {Channel, setIsSelected, setSelectedChannel} from "../../../Services/Redux/filterSlice";
+import {Channel, setIsSelected, setSelectedChannel} from "../../Services/Reducers/filterSlice";
 
 export interface ChannelOptionLabel {
     display_name: string

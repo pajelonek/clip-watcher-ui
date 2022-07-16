@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import './TrendingBox.css';
 import {Paper} from "@mui/material";
 import Carousel from 'react-material-ui-carousel';
-import {useTopStreamsQuery} from "../../../Services/Redux/twitchApi";
+import {useTopStreamsQuery} from "../../Middleware/twitchApi";
 import ReactTwitchEmbedVideo from "react-twitch-embed-video"
 
 export default function TrendingBox() {

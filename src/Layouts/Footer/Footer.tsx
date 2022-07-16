@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import Copyright from "./Copyright";
+import Copyright from "../../Components/Common/Copyright";
 import * as React from "react";
 
 export default function Footer(props: any){
