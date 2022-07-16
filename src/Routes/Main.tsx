@@ -10,7 +10,7 @@ import NotFoundPage from "../Pages/NotFoundPage";
 import {useSelector} from "react-redux";
 import {selectIsSelected} from "../Services/Reducers/filterSlice";
 
-export default function GeneralPage() {
+export default function Main() {
     const isSelectedChannel: boolean = useSelector(selectIsSelected);
 
     return (

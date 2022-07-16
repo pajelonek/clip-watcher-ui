@@ -11,6 +11,9 @@ import cursorReducer from "../Services/Reducers/cursorSlice";
 import pageReducer from "../Services/Reducers/pageSlice";
 import {twitchApi} from "../Middleware/twitchApi";
 import {BrowserRouter} from "react-router-dom";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import {darkTheme, lightTheme} from "../Assets/Themes/theme";
+import {ColorModeContext} from "../App";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
@@ -39,7 +42,35 @@ export function renderWithProviders(
     }: ExtendedRenderOptions = {}
 ) {
     function Wrapper({children}: PropsWithChildren<{}>): JSX.Element {
-        return <BrowserRouter><Provider store={store}>{children}</Provider></BrowserRouter>
+        const [mode, setMode] = React.useState('dark');
+
+        const colorMode = React.useMemo(
+            () => ({
+                toggleColorMode: () => {
+                    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+                },
+            }), [],);
+
+        const theme = React.useMemo(
+            () =>
+                createTheme({
+                    palette: {
+                        ...(mode === 'light' ? lightTheme : darkTheme)
+                    },
+                }), [mode],
+        );
+
+        return (
+            <ColorModeContext.Provider value={colorMode}>
+                <ThemeProvider theme={theme}>
+                    <BrowserRouter>
+                        <Provider store={store}>
+                            {children}
+                        </Provider>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </ColorModeContext.Provider>
+        );
     }
 
     return {store, ...render(ui, {wrapper: Wrapper, ...renderOptions})}

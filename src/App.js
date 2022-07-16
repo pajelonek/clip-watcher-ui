@@ -2,7 +2,8 @@ import * as React from "react";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {Provider} from 'react-redux';
 import {store} from "./Middleware/store";
-import GeneralPage from "./Routes/GeneralPage";
+import Main from "./Routes/Main";
+import {darkTheme, lightTheme} from "./Assets/Themes/theme";
 
 export const ColorModeContext = React.createContext({
     toggleColorMode: () => {}
@@ -23,37 +24,7 @@ function App() {
             createTheme({
                 palette: {
                     mode,
-                    ...(mode === 'light' ?
-                        {
-                            trendingBoxColor: {
-                                main: "rgba(147,239,236,0.83)"
-                            },
-                            background: {
-                                paper: "rgba(147,239,236,0.83)",
-                                default: "rgba(147,239,236,0.83)"
-                            },
-                            contentSectionColor: {
-                                main: "#1976d2"
-                            },
-                            navbar: {
-                                main: "#42a5f5",
-                            }
-                        } :
-                        {
-                            trendingBoxColor: {
-                                main: "#242425"
-                            },
-                            contentSectionColor: {
-                                main: "#242425"
-                            },
-                            background: {
-                                paper: "#242425",
-                                default: "#242425"
-                            },
-                            navbar: {
-                                main: "#000",
-                            }
-                        })
+                    ...(mode === 'light' ? lightTheme : darkTheme)
                 },
             }), [mode],
     );
@@ -63,7 +34,7 @@ function App() {
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
                     <div className="App" id={"app-container"} data-testid={"app-container"}>
-                        <GeneralPage colorModeContext={ColorModeContext}/>
+                        <Main colorModeContext={ColorModeContext}/>
                     </div>
                 </ThemeProvider>
             </ColorModeContext.Provider>
