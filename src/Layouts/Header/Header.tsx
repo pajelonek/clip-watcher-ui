@@ -1,18 +1,12 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import {useTheme} from "@mui/material/styles";
-import {ColorModeContext} from "../../App";
 import {useNavigate} from "react-router-dom";
 import Grid from "@mui/material/Grid";
-// todo add some sort of provider for theme, to make test easier
+import ThemeToggle from "../../Components/ThemeButton/ThemeToggle";
+
 export default function Header(props: any) {
-    const theme = useTheme();
-    const colorMode = React.useContext(ColorModeContext);
     let history = useNavigate();
 
     function handlePopoverOpen() {
@@ -41,16 +35,14 @@ export default function Header(props: any) {
             <Toolbar>
                 <Grid container>
                     <Grid item xs={6}>
-                        <Typography variant="h6" color="inherit" onClick={() => history("/")} display={"inline"}
+                        <Typography id={"typographyLogo"} variant="h6" color="inherit" onClick={() => history("/")} display={"inline"}
                                     onMouseEnter={handlePopoverOpen}
                                     onMouseLeave={handlePopoverClose}>
                             Clip Watcher
                         </Typography>
                     </Grid>
                     <Grid item xs={6} textAlign={"right"}>
-                        <IconButton sx={{ml: 1}} onClick={colorMode.toggleColorMode} color="inherit">
-                            {theme.palette.mode === 'dark' ? <Brightness7Icon/> : <Brightness4Icon/>}
-                        </IconButton>
+                        <ThemeToggle id={"headerThemeToggle"}/>
                     </Grid>
                 </Grid>
             </Toolbar>
