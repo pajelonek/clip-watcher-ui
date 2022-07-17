@@ -6,7 +6,7 @@ import Carousel from 'react-material-ui-carousel';
 import {useTopStreamsQuery} from "../../Middleware/twitchApi";
 import ReactTwitchEmbedVideo from "react-twitch-embed-video"
 
-export default function TrendingBox() {
+export default function TrendingBox(props) {
     const {data, isLoading, isUninitialized, isFetching, isSuccess} = useTopStreamsQuery();
 
     return (
@@ -16,7 +16,7 @@ export default function TrendingBox() {
                    bgcolor: (theme) => `${theme.palette.trendingBoxColor.main}`,
                    boxShadow: 1,
                    borderBottom: (theme) => `2px solid ${theme.palette.divider}`
-               }}>
+               }} {...props}>
             <Grid container id={"carouselContainer"} style={{textAlign: 'center', margin: 'auto'}} width={'150vh'}>
                 <Grid item xs={12} justifyContent={"center"} textAlign={"center"}>
                     <Carousel navButtonsAlwaysVisible={true} swipe={false} autoPlay={false} next={(now, previous) => {

@@ -19,7 +19,7 @@ function replaceMaskUrlWithSize(urlWithMask: string, width: string, height: stri
     return urlWithMask.replace('{width}', width).replace('{height}', height);
 }
 
-export default function ContentSection() {
+export default function ContentSection(props: any) {
 
     const filterState: FilterState = {
         period: useSelector(selectPeriod),
@@ -31,7 +31,7 @@ export default function ContentSection() {
     const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);
 
     return (
-        <Grid container>
+        <Grid container data-testid={props.dataTestId}>
             <Grid item xs={12}>
                 <Grid container flexDirection={"row-reverse"}>
                     <Grid item key={'sideMenu'} xs={12} lg={3}>
