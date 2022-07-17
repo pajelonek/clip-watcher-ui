@@ -4,8 +4,6 @@ import TrendingBox from './TrendingBox';
 import {renderWithProviders} from "../../tests/test-utils";
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { configure } from '@testing-library/dom'
-configure({ asyncUtilTimeout: 50000 })
 
 describe('renders trending box component', () => {
     const handlers = [
