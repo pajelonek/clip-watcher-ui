@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import {clearCursorList} from "../../Services/Reducers/cursorSlice";
 import {clearPage} from "../../Services/Reducers/pageSlice";
 
-export default function SideBarCategoryList() {
+export default function SideBarCategoryList(props) {
     const dispatch = useDispatch();
 
     const {data, isUninitialized, isLoading} = useTopCategoryQuery('100');
@@ -24,7 +24,7 @@ export default function SideBarCategoryList() {
             display: 'flex', flexWrap: 'wrap',
             p: 1, m: 1, borderRadius: 1,
             maxWidth: '100%'
-        }}>
+        }} {...props}>
             <Grid container>
                 <Grid item xs={12}>
                     <Typography>Category: </Typography>

@@ -23,29 +23,22 @@ export default function ClipsPagination(props: any) {
         dispatch(addNewCursorToContext(props.cursor));
     }
 
-
     const handleChangePage = (
         _event: React.MouseEvent<HTMLButtonElement> | null,
         newPage: number,
     ) => {
         if (newPage > page) {
             dispatch(setDirectionOfCursor("after"));
-            dispatch(setCursor({
-                value: savedCursor.cursorList[savedCursor.currentPage + 1],
-            }));
+            dispatch(setCursor({value: savedCursor.cursorList[savedCursor.currentPage + 1],}));
             dispatch(goForwardWithCursor());
         }
         else {
             dispatch(setDirectionOfCursor("before"));
             if (savedCursor.currentPage - 1 <= 0) {
-                dispatch(setCursor({
-                    value: null,
-                }));
+                dispatch(setCursor({value: null,}));
             }
             else {
-                dispatch(setCursor({
-                    value: savedCursor.cursorList[savedCursor.currentPage - 1],
-                }));
+                dispatch(setCursor({value: savedCursor.cursorList[savedCursor.currentPage - 1],}));
             }
             dispatch(goBackWithCursor());
         }
@@ -58,6 +51,7 @@ export default function ClipsPagination(props: any) {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
+
  // todo jak nie ma klipow to nie ma oblugi, trzeba cos dodac gdy 1) klipow w ogole nie ma, 2) cursor się blokuje
     return (
         !props.loadingClips ?
@@ -72,6 +66,7 @@ export default function ClipsPagination(props: any) {
                         rowsPerPageOptions={[24,48,72]}
                         onRowsPerPageChange={handleChangeRowsPerPage}
                         style={{margin: "auto"}}
+                        data-testid={props.dataTestId}
                     />
                 </Stack>
             </Grid>
