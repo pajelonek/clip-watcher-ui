@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setPeriod, selectPeriod} from '../../Services/Reducers/filterSlice';
 import {clearCursorList} from "../../Services/Reducers/cursorSlice";
 import {clearPage} from "../../Services/Reducers/pageSlice";
-export default function PeriodRadioFilter() {
+export default function PeriodRadioFilter(props) {
     const dispatch = useDispatch();
     const period = useSelector(selectPeriod);
 
@@ -21,7 +21,7 @@ export default function PeriodRadioFilter() {
             display: 'flex', flexWrap: 'wrap',
             p: 1, m: 1,
             borderRadius: 1
-        }}>
+        }} {...props}>
             <FormControl>
                 <FormLabel id="sidebar-radio-label">Period</FormLabel>
                 <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label"

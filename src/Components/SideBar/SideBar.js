@@ -5,7 +5,7 @@ import PeriodRadioFilter from "./PeriodRadioFilter";
 import SideBarCategoryList from "./SideBarCategoryList";
 import SideBarChannelList from "./SideBarChannelList";
 
-export default function SideBar() {
+export default function SideBar(props) {
 
     const commonStyles = {
         bgcolor: "#161617",
@@ -16,7 +16,7 @@ export default function SideBar() {
     };
 
     return (
-        <Grid container>
+        <Grid container {...props}>
             <Grid item xs={11} lg={10} sx={{margin: 'auto'}}>
                 <Grid container sx={{...commonStyles}}>
                     <Grid item key={'SideBarFilterList'} sx={{
