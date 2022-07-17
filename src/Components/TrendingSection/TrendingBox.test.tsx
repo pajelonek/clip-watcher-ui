@@ -10,13 +10,13 @@ configure({ asyncUtilTimeout: 50000 })
 describe('renders trending box component', () => {
     const handlers = [
         rest.get('http://localhost:8080/streams/top', (req, res, ctx) => {
-            return res(ctx.json(sample_response_top_streams), ctx.delay(150))
+            return res(ctx.json(sample_response_top_streams))
         })
     ]
 
     const server = setupServer(...handlers)
 
-    beforeAll(() => server.listen())
+    beforeAll(async () => server.listen())
 
     afterEach(() => server.resetHandlers())
 
