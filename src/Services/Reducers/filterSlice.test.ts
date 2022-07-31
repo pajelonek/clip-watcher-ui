@@ -37,8 +37,8 @@ describe('filter slice tests', () => {
 
     test('should set cursor', () => {
         const previousState: FilterState = {...filterSliceInitialState, cursor: {value: "cursor1", numberOfClips: 24}};
-        const newCursor: any = {value: "cursor2"};
-        const expectedState: FilterState = {...filterSliceInitialState, cursor: newCursor};
+        const newCursor: any = "cursor2";
+        const expectedState: FilterState = {...filterSliceInitialState, cursor: {value: newCursor, numberOfClips: 24}};
 
         expect(reducer(previousState, setCursor(newCursor))).toEqual(expectedState);
     })
