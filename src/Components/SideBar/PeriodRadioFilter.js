@@ -1,11 +1,11 @@
-import FormControl from "@mui/material/FormControl";
-import {Box, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
-import Grid from "@mui/material/Grid";
 import * as React from "react";
+import FormControl from "@mui/material/FormControl";
+import {Box, FormLabel, MenuItem, Select} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {setPeriod, selectPeriod} from '../../Services/Reducers/filterSlice';
 import {clearCursorList} from "../../Services/Reducers/cursorSlice";
 import {clearPage} from "../../Services/Reducers/pageSlice";
+
 export default function PeriodRadioFilter(props) {
     const dispatch = useDispatch();
     const period = useSelector(selectPeriod);
@@ -13,34 +13,33 @@ export default function PeriodRadioFilter(props) {
     function handleOnChange(e) {
         dispatch(clearCursorList());
         dispatch(clearPage());
-        dispatch(setPeriod(e.currentTarget.value));
+        dispatch(setPeriod(e.target.value));
     }
 
+    const periodBoxStyles = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        p: 1,
+        m: 1,
+        borderRadius: 1
+    };
+
     return (
-        <Box xs={3} lg={12} sx={{
-            display: 'flex', flexWrap: 'wrap',
-            p: 1, m: 1,
-            borderRadius: 1
-        }} {...props}>
-            <FormControl>
-                <FormLabel id="sidebar-radio-label">Period</FormLabel>
-                <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group" value={period ? period : 'today' } onChange={handleOnChange}>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <FormControlLabel value="today" control={<Radio size="small"/>} label="Today"/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormControlLabel value="week" control={<Radio size="small"/>} label="Week"/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormControlLabel value="month" control={<Radio size="small"/>} label="Month"/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormControlLabel value="all_time" control={<Radio size="small"/>} label="All time"/>
-                        </Grid>
-                    </Grid>
-                </RadioGroup>
+        <Box xs={3} lg={12} sx={{...periodBoxStyles}} {...props}>
+            <FormControl fullWidth>
+                <FormLabel id="sidebar-period-label">Period</FormLabel>
+                <Select
+                    id="sidebar-period-select"
+                    value={period}
+                    label="Period"
+                    onChange={handleOnChange}
+                    sx={{marginTop: "2%"}}
+                >
+                    <MenuItem value="today">Today</MenuItem>
+                    <MenuItem value="week">Week</MenuItem>
+                    <MenuItem value="month">Month</MenuItem>
+                    <MenuItem value="all_tim">All time</MenuItem>
+                </Select>
             </FormControl>
         </Box>
     );

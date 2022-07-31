@@ -1,9 +1,9 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import SideBarFilterList from "./SideBarFilterList";
 import PeriodRadioFilter from "./PeriodRadioFilter";
 import SideBarCategoryList from "./SideBarCategoryList";
 import SideBarChannelList from "./SideBarChannelList";
+import SideBarFilterList from "./SideBarFilterList";
 
 export default function SideBar(props) {
 

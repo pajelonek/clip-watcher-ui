@@ -12,12 +12,9 @@ import {
     selectCursor,
     selectPeriod
 } from "../../Services/Reducers/filterSlice";
-import Typography from "@mui/material/Typography";
-import {Box} from "@mui/material";
+import ClipsChannelLabel from "./ClipsLabel/ClipsChannelLabel";
+import ClipsCategoryLabel from "./ClipsLabel/ClipsCategoryLabel";
 
-function replaceMaskUrlWithSize(urlWithMask: string, width: string, height: string) {
-    return urlWithMask.replace('{width}', width).replace('{height}', height);
-}
 
 export default function ContentSection(props: any) {
 
@@ -39,39 +36,29 @@ export default function ContentSection(props: any) {
                     </Grid>
                     <Grid item xs={12} lg={9}>
                         <Grid container marginLeft={'2%'} marginTop={'2%'} width={'100%'}>
-                            <Grid item xs={12}>
-                                <Grid container marginLeft={'1%'}>
-                                    <Grid item xs={2}>
-                                        <Box
-                                            component="img"
-                                            sx={{
-                                                height: 233,
-                                                width: 150,
-                                                maxHeight: {xs: 233, md: 167},
-                                                maxWidth: {xs: 350, md: 250},
-                                            }}
-                                            alt="The house from the offer."
-                                            src={replaceMaskUrlWithSize(filterState.category.box_art_url, "500", "500")}
-                                        />
-                                    </Grid>
-                                    {/* todo zrob cos z tym jak channel wybieramy :/ niepotrzebne w paru przypadkach*/}
-                                    <Grid item xs={10}>
-                                        <Typography variant="h4" component="h2"
-                                                    style={{'position': 'relative', 'top': '40%', 'left': '0'}}>Most
-                                            popular {filterState.category.name} clips
-                                            from {filterState.period}</Typography>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
+                            {!filterState.channel.isSelected ?
+                                <ClipsCategoryLabel boxImg={filterState.category.box_art_url}
+                                                    categoryName={filterState.category.name}
+                                                    period={filterState.period}/> :
+                                <ClipsChannelLabel/>}
                             <Grid item key={'clipsContainer'} xs={12}>
-                                <ClipsContainer clips={data?.data} cursor={data?.pagination?.cursor} loadingClips={isFetching} isLoading={isLoading} isSuccess={isSuccess}
-                                                    isUninitialized={isUninitialized} hasError={error}/>
+                                <ClipsContainer clips={data?.data}
+                                                cursor={data?.pagination?.cursor}
+                                                loadingClips={isFetching}
+                                                isLoading={isLoading}
+                                                isSuccess={isSuccess}
+                                                isUninitialized={isUninitialized}
+                                                hasError={error}/>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item key={'menu'} xs={12}>
-                        <ClipsPagination cursor={data?.pagination?.cursor} isLoading={isLoading} isSuccess={isSuccess}
-                                         isUninitialized={isUninitialized} hasError={error} loadingClips={isFetching}/>
+                        <ClipsPagination cursor={data?.pagination?.cursor}
+                                         isLoading={isLoading}
+                                         isSuccess={isSuccess}
+                                         isUninitialized={isUninitialized}
+                                         hasError={error}
+                                         loadingClips={isFetching}/>
                     </Grid>
                 </Grid>
             </Grid>

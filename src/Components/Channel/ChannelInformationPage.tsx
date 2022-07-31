@@ -22,7 +22,7 @@ export default function ChannelInformationPage(props: any) {
                                     justifyContent: "center",
                                     display: "flex"
                                 }}>
-                                    <Avatar alt="broadcasterAvatar" src={channel.thumbnail_url}
+                                    <Avatar alt="broadcasterAvatar" src={channel.thumbnail_url as string}
                                             sx={{width: '50%', height: '50%'}}/>
                                 </Grid>
                                 <Grid item xs={12} style={{
@@ -52,6 +52,7 @@ export default function ChannelInformationPage(props: any) {
                                             <Typography variant="h4" component="h2">
                                                 Language: <img alt={"countryFlag"} width={'50px'} height={'30px'}
                                                                src={`https://flagcdn.com/w20/` + channel.broadcaster_language + `.png`}/>
+                                                {/*todo flagi nie dziaja*/}
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>

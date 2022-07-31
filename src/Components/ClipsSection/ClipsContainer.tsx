@@ -6,7 +6,7 @@ import * as React from "react";
 export default function ClipsContainer(props: any) {
 
     return (
-        <Grid id={"clipsContainer-container"} container spacing={0} {...props}>
+        <Grid id={"clipsContainer-container"} container spacing={0}>
             {props.clips && !props.loadingClips && !props.isUninitialized && !props.isFetching ?
                 props.clips.map((clip: any) => (
                     <Grid item key={clip.id} xs={12} sm={6} md={4} lg={3}>

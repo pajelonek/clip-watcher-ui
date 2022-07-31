@@ -1,13 +1,21 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import CircularProgress from '@mui/material/CircularProgress';
 import {useSearchChannelQuery} from "../../Middleware/twitchApi";
-import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {debounce} from "../../Services/Utils/channelUtils";
 import {useNavigate} from "react-router-dom";
-import {Channel, setIsSelected, setSelectedChannel} from "../../Services/Reducers/filterSlice";
+import {
+    clearPeriod,
+    clearSelectedCategory,
+    setIsSelected,
+    setSelectedChannel
+} from "../../Services/Reducers/filterSlice";
+import {Box} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import Grid from "@mui/material/Grid";
+import {clearPage} from "../../Services/Reducers/pageSlice";
+import {clearCursorList} from "../../Services/Reducers/cursorSlice";
 
 export interface ChannelOptionLabel {
     display_name: string
@@ -29,29 +37,6 @@ export default function ChannelFilter(props: any) {
         }
     }
 
-    // todo we can add loading as earlier when times comes
-    // const loading = open && options.length === 0;
-    // useEffect(() => {
-    //     let active = true;
-    //
-    //     if (!loading) {
-    //         return undefined;
-    //     }
-    //
-    //     (async () => {
-    //         await sleep(1e3); // For demo purposes.
-    //        setQuery("ok");
-    //
-    //         if (active) {
-    //             setOptions([...topFilms]);
-    //         }
-    //     })();
-    //
-    //     return () => {
-    //         active = false;
-    //     };
-    // }, [loading]);
-
     const debouncedSearch = React.useMemo(
         () =>
             debounce((val: string) => {
@@ -60,7 +45,6 @@ export default function ChannelFilter(props: any) {
         [setSearchParam]
     )
 
-
     const handleChange = React.useCallback(
         val => {
             debouncedSearch(val);
@@ -68,8 +52,7 @@ export default function ChannelFilter(props: any) {
         [debouncedSearch]
     );
 
-
-    useEffect(() => {
+    React.useEffect(() => {
         if (query !== "") {
             handleChange(query);
         }
@@ -79,53 +62,54 @@ export default function ChannelFilter(props: any) {
         if (!open) {
             setOptions([]);
         }
-    }, [open]); // todo search results doesnt dissapear after not chosing one, popraw
+    }, [open]);
 
-    function setNewChannel(newChannelId: number) {
-        dispatch(setSelectedChannel(options[newChannelId] as Channel));
-        dispatch(setIsSelected(true));
-        // todo clear previous data which may cause troubles like cursor and so on
-        // todo after clicking channel, you need to put channel name into the UI
-        // todo after removing channel, get back to default category
-        // todo after clicking channel reset period, cursor and so on
-        // todo add to this filter channel image as in categories
-        history("/channel");
+    function setNewChannel(_event: React.SyntheticEvent, value: any, reason: string) {
+        if (reason === "selectOption") {
+            dispatch(setSelectedChannel(value));
+            dispatch(setIsSelected(true));
+            dispatch(clearSelectedCategory());
+            dispatch(clearPeriod());
+            dispatch(clearPage());
+            dispatch(clearCursorList());
+            history("/channel");
+        }
     }
 
     return (
-        <Autocomplete
-            id="sideBar-channelFilterAutocomplete"
-            open={open}
-            onOpen={() => {
-                setOpen(true);
-            }}
-            onClose={() => {
-                setOpen(false);
-            }}
-            isOptionEqualToValue={(option: ChannelOptionLabel, value) => option.display_name === value.display_name}
-            getOptionLabel={(option: ChannelOptionLabel) => option.display_name}
-            options={options}
-            onChange={(e: any) => setNewChannel(e.target.value)}
-            // loading={loading}
-            onInput={(e: any) => setQuery(e.target.value)}
-            sx={{width: '100%', maxWidth: '100%', marginLeft: "0"}}
-            renderInput={(params) => (
-                <TextField
-                    {...params}
-                    label="Search a channel"
-                    InputProps={{
-                        ...params.InputProps,
-                        // todo loading dodac?
-                        endAdornment: (
-                            <React.Fragment>
-                                {false ? <CircularProgress color="inherit" size={20} /> : null}
-                                {params.InputProps.endAdornment}
-                            </React.Fragment>
-                        ),
+        <Grid item xs={12}>
+            <FormControl sx={{m: 1, marginLeft: '0'}} fullWidth>
+                <Autocomplete
+                    id="sideBar-channelFilterAutocomplete"
+                    open={open}
+                    onOpen={() => {
+                        setOpen(true);
                     }}
+                    onClose={() => {
+                        setOpen(false);
+                    }}
+                    disableClearable
+                    isOptionEqualToValue={(option: ChannelOptionLabel, value: string) => option.display_name === value}
+                    getOptionLabel={(option: ChannelOptionLabel) => option.display_name ? option.display_name : ''}
+                    options={options}
+                    onChange={(_event, value, reason) => setNewChannel(_event, value, reason)}
+                    onInput={(e: any) => {setQuery(e.target.value)}}
+                    sx={{width: '100%', maxWidth: '100%', marginLeft: "0"}}
+                    renderInput={(params) => (
+                        <Box sx={{display: 'flex', alignItems: 'flex-end'}}>
+                            <TextField
+                                {...params}
+                                inputProps={{
+                                    ...params.inputProps,
+                                    placeholder: "Search a channel",
+                                    autoComplete: 'new-password', // disable autocomplete and autofill
+                                }}
+                            />
+                        </Box>
+                    )}
+                    {...props}
                 />
-            )}
-            {...props}
-        />
+            </FormControl>
+        </Grid>
     );
 }

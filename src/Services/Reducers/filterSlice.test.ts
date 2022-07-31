@@ -16,27 +16,27 @@ describe('filter slice tests', () => {
     })
 
     test('should set period', () => {
-        const previousState: FilterState = {...filterSliceInitialState, period: "24H", cursor: {value: "cursor1"}};
+        const previousState: FilterState = {...filterSliceInitialState, period: "24H", cursor: {value: "cursor1", numberOfClips: 24}};
 
-        const expectedState: FilterState = {...filterSliceInitialState, period: "7D", cursor: {value: ""}};
+        const expectedState: FilterState = {...filterSliceInitialState, period: "7D", cursor: {value: "", numberOfClips: 24}};
 
         expect(reducer(previousState, setPeriod("7D"))).toEqual(expectedState);
     })
 
     test('should set category', () => {
-        const previousState: FilterState = {...filterSliceInitialState, cursor: {value: "cursor1"}};
+        const previousState: FilterState = {...filterSliceInitialState, cursor: {value: "cursor1", numberOfClips: 24}};
         const newCategory: CategoryState = {
             id: 123456,
             name: 'CUSTOM NEW CATEGORY',
             box_art_url: "CUSTOM_NEW_URL"
         };
-        const expectedState: FilterState = {...filterSliceInitialState, category: newCategory, cursor: {value: ""}};
+        const expectedState: FilterState = {...filterSliceInitialState, category: newCategory, cursor: {value: "", numberOfClips: 24}};
 
         expect(reducer(previousState, setCategory(newCategory))).toEqual(expectedState);
     })
 
     test('should set cursor', () => {
-        const previousState: FilterState = {...filterSliceInitialState, cursor: {value: "cursor1"}};
+        const previousState: FilterState = {...filterSliceInitialState, cursor: {value: "cursor1", numberOfClips: 24}};
         const newCursor: any = {value: "cursor2"};
         const expectedState: FilterState = {...filterSliceInitialState, cursor: newCursor};
 

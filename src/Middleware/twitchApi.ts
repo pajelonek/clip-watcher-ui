@@ -47,7 +47,7 @@ export const twitchApi = createApi({
                     body: {
                         "gameId": filterState.channel.isSelected ? null : filterState.category.id,
                         "broadcasterId": filterState.channel.isSelected ? filterState.channel.selectedChannel.id : null,
-                        "first": "24",
+                        "first": filterState.cursor.numberOfClips,
                         "endedAt": new Date().toISOString(),
                         "startedAt": resolveDate(filterState.period).toISOString(),
                         "after": filterState.cursor.value,

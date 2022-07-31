@@ -5,9 +5,6 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 
-// todo fix ts-ignore, check those styles
-// todo przyda sie jakis zamiennik jak nie dziala thumbnail + walidacja if exists
-
 export default function Clip(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);

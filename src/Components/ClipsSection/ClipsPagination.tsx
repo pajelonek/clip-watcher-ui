@@ -3,13 +3,13 @@ import Stack from '@mui/material/Stack';
 import Grid from "@mui/material/Grid";
 import {TablePagination} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {setCursor} from "../../Services/Reducers/filterSlice";
+import {changeClipsPerPage, setCursor} from "../../Services/Reducers/filterSlice";
 import {
     CursorState,
     selectCursor,
     goBackWithCursor,
     setDirectionOfCursor,
-    goForwardWithCursor, addNewCursorToContext
+    goForwardWithCursor, addNewCursorToContext, clearCursorList
 } from "../../Services/Reducers/cursorSlice";
 import {selectPage, setPage} from "../../Services/Reducers/pageSlice";
 
@@ -35,7 +35,7 @@ export default function ClipsPagination(props: any) {
         else {
             dispatch(setDirectionOfCursor("before"));
             if (savedCursor.currentPage - 1 <= 0) {
-                dispatch(setCursor({value: null,}));
+                dispatch(setCursor({value: null}));
             }
             else {
                 dispatch(setCursor({value: savedCursor.cursorList[savedCursor.currentPage - 1],}));
@@ -50,9 +50,10 @@ export default function ClipsPagination(props: any) {
     ) => { // todo clear
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
+        dispatch(clearCursorList());
+        dispatch(changeClipsPerPage(parseInt(event.target.value, 10)))
     };
 
- // todo jak nie ma klipow to nie ma oblugi, trzeba cos dodac gdy 1) klipow w ogole nie ma, 2) cursor się blokuje
     return (
         !props.loadingClips ?
             <Grid item key={'pagination'} xs={12} marginTop={'3%'}>

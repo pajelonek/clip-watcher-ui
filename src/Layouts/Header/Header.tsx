@@ -23,6 +23,10 @@ export default function Header(props: any) {
         }
     }
 
+    function handleOnClick() {
+        history("/");
+    }
+
     return (
         <AppBar
             position="static"
@@ -35,7 +39,11 @@ export default function Header(props: any) {
             <Toolbar>
                 <Grid container>
                     <Grid item xs={6}>
-                        <Typography id={"typographyLogo"} variant="h6" color="inherit" onClick={() => history("/")} display={"inline"}
+                        <Typography id={"typographyLogo"}
+                                    variant="h6"
+                                    color="inherit"
+                                    display={"inline"}
+                                    onClick={handleOnClick}
                                     onMouseEnter={handlePopoverOpen}
                                     onMouseLeave={handlePopoverClose}>
                             Clip Watcher
