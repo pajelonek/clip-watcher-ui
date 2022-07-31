@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import {Avatar, Paper} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Logo from "../../Assets/Images/twitch.png";
+import {getLanguageName} from "../../Assets/Languages/language_iso_codes";
 
 // todo refactor na mniejsze
 export default function ChannelInformationPage(props: any) {
@@ -12,7 +13,7 @@ export default function ChannelInformationPage(props: any) {
 
     return (
         <Grid container marginTop={'2%'} id={"mainPage-ChannelInformationPage-Container"} {...props}>
-            <Grid item xs={12} marginLeft={'2%'} marginRight={'2%'}>
+            <Grid item xs={12} paddingLeft={"2%"} paddingRight={"2%"}>
                 <Grid container spacing={3} height={'100%'}>
                     <Grid id={"mainPage-ChannelInformationPage-AvatarContainer"} item xs={3}>
                         <Paper sx={{height: '100%'}}>
@@ -39,20 +40,18 @@ export default function ChannelInformationPage(props: any) {
                     </Grid>
                     <Grid id={"mainPage-ChannelInformationPage-DescriptionContainer"} item xs={6}>
                         <Paper sx={{height: '100%'}}>
-                            <Grid container direction="column">
+                            <Grid container>
                                 <Grid item xs={12} marginTop={'1%'} marginLeft={'2%'} justifyContent={"left"} textAlign={"left"}>
                                     <Grid container spacing={3}>
-                                        <Grid item xs={12}>
-                                            <Typography noWrap style={{maxWidth: '100%'}}
+                                        <Grid item xs={11}>
+                                            <Typography noWrap={true} style={{maxWidth: '100%'}}
                                                         variant="h4" component="h2">
                                                 Last title: {channel.title}
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Typography variant="h4" component="h2">
-                                                Language: <img alt={"countryFlag"} width={'50px'} height={'30px'}
-                                                               src={`https://flagcdn.com/w20/` + channel.broadcaster_language + `.png`}/>
-                                                {/*todo flagi nie dziaja*/}
+                                                Language: {getLanguageName(channel.broadcaster_language)}
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>

@@ -5,16 +5,17 @@ import * as React from "react";
 
 interface ClipsContainerProps {
     clips: [],
-    loadingClips: boolean,
+    isLoading: boolean,
+    isSuccess: boolean
     isUninitialized: boolean,
     isFetching: boolean,
-    dataTestId: string
+    dataTestId?: string
 }
 export default function ClipsContainer(props: ClipsContainerProps) {
 
     return (
         <Grid id={"clipsContainer-container"} container spacing={0} data-testid={props.dataTestId}>
-            {props.clips && !props.loadingClips && !props.isUninitialized && !props.isFetching ?
+            {props.clips && !props.isLoading && !props.isUninitialized && !props.isFetching ?
                 props.clips.map((clip: any) => (
                     <Grid item key={clip.id} xs={12} sm={6} md={4} lg={3}>
                         <Clip clip={clip}/>

@@ -24,7 +24,7 @@ export default function ContentSection(props: any) {
         cursor: useSelector(selectCursor),
         channel: useSelector(selectChannelState)
     };
-
+// todo if no clips left then 400 from API, verify pls
     const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);
 
     return (
@@ -43,12 +43,11 @@ export default function ContentSection(props: any) {
                                 <ClipsChannelLabel/>}
                             <Grid item key={'clipsContainer'} xs={12}>
                                 <ClipsContainer clips={data?.data}
-                                                cursor={data?.pagination?.cursor}
-                                                loadingClips={isFetching}
+                                                isFetching={isFetching}
                                                 isLoading={isLoading}
                                                 isSuccess={isSuccess}
                                                 isUninitialized={isUninitialized}
-                                                hasError={error}/>
+                                />
                             </Grid>
                         </Grid>
                     </Grid>
