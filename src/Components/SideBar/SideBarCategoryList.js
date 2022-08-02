@@ -86,6 +86,7 @@ export default function SideBarCategoryList(props) {
                                                   {...params}
                                                   inputProps={{
                                                       ...params.inputProps,
+                                                      value: "",
                                                       placeholder: "Search a category",
                                                       autoComplete: 'new-password', // disable autocomplete and autofill
                                                   }}
