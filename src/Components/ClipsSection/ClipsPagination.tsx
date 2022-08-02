@@ -35,7 +35,7 @@ export default function ClipsPagination(props: any) {
         else {
             dispatch(setDirectionOfCursor("before"));
             if (savedCursor.currentPage - 1 <= 0) {
-                dispatch(setCursor({value: null}));
+                dispatch(setCursor(null));
             }
             else {
                 dispatch(setCursor(savedCursor.cursorList[savedCursor.currentPage - 1]));
