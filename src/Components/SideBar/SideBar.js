@@ -16,8 +16,8 @@ export default function SideBar(props) {
     };
 
     return (
-        <Grid container {...props}>
-            <Grid item xs={11} lg={10} sx={{margin: 'auto'}}>
+        <Grid container {...props} marginTop={"6%"}>
+            <Grid item xs={11} lg={10} sx={{margin: 'auto'}} >
                 <Grid container sx={{...commonStyles}}>
                     <Grid item key={'SideBarFilterList'} sx={{
                         '@media (max-width: 1200px)' : {

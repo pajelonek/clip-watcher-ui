@@ -38,7 +38,7 @@ export default function PeriodRadioFilter(props) {
                     <MenuItem value="today">Today</MenuItem>
                     <MenuItem value="week">Week</MenuItem>
                     <MenuItem value="month">Month</MenuItem>
-                    <MenuItem value="all_tim">All time</MenuItem>
+                    <MenuItem value="all_time">All time</MenuItem>
                 </Select>
             </FormControl>
         </Box>
