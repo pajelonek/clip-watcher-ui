@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default function TrendingBox(props) {
     const {data, isLoading, isUninitialized, isFetching, isSuccess} = useTopStreamsQuery();
-    console.log("trending box refresh");
+
     return (
         data && !isLoading && !isUninitialized && !isFetching && isSuccess ?
         <Paper variant="outlined" square

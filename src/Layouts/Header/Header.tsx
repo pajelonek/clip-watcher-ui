@@ -5,8 +5,13 @@ import Typography from '@mui/material/Typography';
 import {useNavigate} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import ThemeToggle from "../../Components/ThemeButton/ThemeToggle";
+import {clearPage, setPage} from "../../Services/Reducers/pageSlice";
+import {clearCursorList} from "../../Services/Reducers/cursorSlice";
+import {changeClipsPerPage, clearSelectedChannel, clearState} from "../../Services/Reducers/filterSlice";
+import {useDispatch} from "react-redux";
 
 export default function Header(props: any) {
+    const dispatch = useDispatch();
     let history = useNavigate();
 
     function handlePopoverOpen() {
@@ -24,6 +29,9 @@ export default function Header(props: any) {
     }
 
     function handleOnClick() {
+        dispatch(clearPage());
+        dispatch(clearCursorList());
+        dispatch(clearState());
         history("/");
     }
 
@@ -35,7 +43,6 @@ export default function Header(props: any) {
                 bgcolor: (theme: any) => `${theme.palette.navbar.main}`,
                 borderBottom: (theme) => `1.5px solid ${theme.palette.divider}`
             }} {...props}>
-            {/*// todo after navigation to main page, reset context*/}
             <Toolbar>
                 <Grid container>
                     <Grid item xs={6}>

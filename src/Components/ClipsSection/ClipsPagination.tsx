@@ -51,7 +51,7 @@ export default function ClipsPagination(props: any) {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
         dispatch(clearCursorList());
-        dispatch(changeClipsPerPage(parseInt(event.target.value, 10)))
+        dispatch(changeClipsPerPage(parseInt(event.target.value, 10)));
     };
 
     return (

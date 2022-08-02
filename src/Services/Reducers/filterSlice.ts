@@ -111,6 +111,7 @@ export const filterSlice = createSlice({
             state.category = filterSliceInitialState.category;
             state.cursor = filterSliceInitialState.cursor;
             state.period = filterSliceInitialState.period;
+            state.channel = filterSliceInitialState.channel;
         },
         clearPeriod(state) {
             state.period = filterSliceInitialState.period;

@@ -12,6 +12,20 @@ interface ClipsCategoryLabelProps {
     categoryName: string,
     period: string
 }
+function getPeriodMappingForUser (period: string) {
+    switch (period) {
+        case 'today' :
+            return 'the last 24 hours';
+        case 'week' :
+            return 'the last week';
+        case 'month' :
+            return 'the last month';
+        case 'all_time':
+            return 'all time';
+        default:
+            return period;
+    }
+}
 
 export default function ClipsCategoryLabel(props: ClipsCategoryLabelProps) {
 
@@ -35,7 +49,7 @@ export default function ClipsCategoryLabel(props: ClipsCategoryLabelProps) {
                 <Grid item xs={10}>
                     <Typography variant="h4" component="h2"
                                 style={{'position': 'relative', 'top': '40%', 'left': '0'}}>
-                        Most popular {props.categoryName} clips from {props.period}
+                        Most popular {props.categoryName} clips from {getPeriodMappingForUser(props.period)}
                     </Typography>
                 </Grid>
             </Grid>
