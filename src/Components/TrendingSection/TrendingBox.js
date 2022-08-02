@@ -2,29 +2,29 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import './TrendingBox.css';
 import {Paper} from "@mui/material";
-import Carousel from 'react-material-ui-carousel';
 import {useTopStreamsQuery} from "../../Middleware/twitchApi";
-import ReactTwitchEmbedVideo from "react-twitch-embed-video"
+import TrendingBoxCarousel from "./TrendingBoxCarousel";
+import Typography from "@mui/material/Typography";
 
 export default function TrendingBox(props) {
     const {data, isLoading, isUninitialized, isFetching, isSuccess} = useTopStreamsQuery();
-
+    console.log("trending box refresh");
     return (
         data && !isLoading && !isUninitialized && !isFetching && isSuccess ?
         <Paper variant="outlined" square
                sx={{
                    bgcolor: (theme) => `${theme.palette.trendingBoxColor.main}`,
                    boxShadow: 1,
-                   borderBottom: (theme) => `2px solid ${theme.palette.divider}`
+                   borderBottom: (theme) => `2px solid ${theme.palette.divider}`,
                }} {...props}>
-            <Grid container id={"carouselContainer"} style={{textAlign: 'center', margin: 'auto'}} width={'150vh'}>
-                <Grid item xs={12} justifyContent={"center"} textAlign={"center"}>
-                    <Carousel navButtonsAlwaysVisible={true} swipe={false} autoPlay={false} next={(now, previous) => {
-                        // todo remove old, render new one
-                    }}>
-                        <ReactTwitchEmbedVideo width={'100%'} key={0} channel={data.data[0].user_login} autoplay={false} muted={true} targetId={"test"} />
-                        <ReactTwitchEmbedVideo width={'100%'} key={1} channel={data.data[1].user_login} autoplay={false} muted={true} targetId={"hidden-form"} />
-                    </Carousel>
+            <Grid container id={"carouselContainer"} style={{textAlign: 'center', margin: 'auto', marginTop: "2%"}} width={'150vh'} >
+                <Grid item xs={12} justifyContent={"center"} textAlign={"center"} marginBottom={"2%"}>
+                    <Typography variant={"h3"} align={"center"}>
+                        Check out trending streams!
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} justifyContent={"center"} textAlign={"center"} marginBottom={"2%"}>
+                    <TrendingBoxCarousel streamArray={data.data}/>
                 </Grid>
             </Grid>
         </Paper>

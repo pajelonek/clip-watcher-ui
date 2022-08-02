@@ -40,6 +40,8 @@ export const twitchApi = createApi({
     endpoints: (builder) => ({
         getClips: builder.query({
             query: (filterState: FilterState) => {
+                console.log("cursor");
+                console.log(filterState.cursor.value);
                 return ({
                     url: '/clips',
                     method: 'POST',

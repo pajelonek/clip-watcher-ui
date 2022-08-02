@@ -3,13 +3,15 @@ import {createSlice} from '@reduxjs/toolkit'
 export interface CursorState {
     currentPage: number
     cursorList: string[],
-    direction: string
+    direction: string,
+    isDisabledPagination: boolean
 }
 
 export const cursorSliceInitialState = {
     currentPage: 0,
     cursorList: [""],
-    direction: 'after'
+    direction: 'after',
+    isDisabledPagination: false
 } as CursorState;
 
 export const cursorSlice = createSlice({
@@ -24,6 +26,7 @@ export const cursorSlice = createSlice({
             state.currentPage = cursorSliceInitialState.currentPage;
             state.cursorList = cursorSliceInitialState.cursorList;
             state.direction = cursorSliceInitialState.direction;
+            state.isDisabledPagination = cursorSliceInitialState.isDisabledPagination;
         },
         addNewCursorToContext(state, action) {
             const exists = state.cursorList.some(cursor => (cursor === action.payload));
@@ -43,6 +46,9 @@ export const cursorSlice = createSlice({
         },
         setDirectionOfCursor(state, action) {
             state.direction = action.payload;
+        },
+        setIsDisablePagination(state, action) {
+            state.isDisabledPagination = action.payload;
         }
     }
 })
@@ -55,7 +61,8 @@ export const {
     goBackWithCursor,
     setDirectionOfCursor,
     goForwardWithCursor,
-    clearCursorList
+    clearCursorList,
+    setIsDisablePagination
 } = cursorSlice.actions
 
 export default cursorSlice.reducer

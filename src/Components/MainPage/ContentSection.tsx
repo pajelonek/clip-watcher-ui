@@ -24,6 +24,7 @@ export default function ContentSection(props: any) {
         cursor: useSelector(selectCursor),
         channel: useSelector(selectChannelState)
     };
+    console.log(filterState);
 // todo if no clips left then 400 from API, verify pls
     const {data, error, isLoading, isUninitialized, isFetching, isSuccess} = useGetClipsQuery(filterState);
 

@@ -29,7 +29,7 @@ export default function ClipsPagination(props: any) {
     ) => {
         if (newPage > page) {
             dispatch(setDirectionOfCursor("after"));
-            dispatch(setCursor({value: savedCursor.cursorList[savedCursor.currentPage + 1],}));
+            dispatch(setCursor(savedCursor.cursorList[savedCursor.currentPage + 1]));
             dispatch(goForwardWithCursor());
         }
         else {
@@ -38,7 +38,7 @@ export default function ClipsPagination(props: any) {
                 dispatch(setCursor({value: null}));
             }
             else {
-                dispatch(setCursor({value: savedCursor.cursorList[savedCursor.currentPage - 1],}));
+                dispatch(setCursor(savedCursor.cursorList[savedCursor.currentPage - 1]));
             }
             dispatch(goBackWithCursor());
         }
@@ -59,8 +59,25 @@ export default function ClipsPagination(props: any) {
             <Grid item key={'pagination'} xs={12} marginTop={'3%'}>
                 <Stack spacing={2}>
                     <TablePagination
+                        SelectProps={{
+                            disabled: savedCursor.isDisabledPagination
+                        }}
+                        backIconButtonProps={
+                            savedCursor.isDisabledPagination
+                                ? {
+                                    disabled: savedCursor.isDisabledPagination
+                                }
+                                : undefined
+                        }
+                        nextIconButtonProps={
+                            savedCursor.isDisabledPagination
+                                ? {
+                                    disabled: savedCursor.isDisabledPagination
+                                }
+                                : undefined
+                        }
                         component="div"
-                        count={100}
+                        count={1000}
                         page={page}
                         onPageChange={handleChangePage}
                         rowsPerPage={rowsPerPage}

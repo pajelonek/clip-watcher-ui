@@ -19,7 +19,8 @@ describe('cursor slice tests', () => {
         const payload: CursorState = {
             currentPage: 1,
             cursorList: ["cursor1, cursor2"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         }
 
         expect(reducer(previousState, setCursor(payload))).toEqual(payload);
@@ -29,7 +30,8 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 1,
             cursorList: ["cursor1, cursor2"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         expect(reducer(previousState, clearCursorList())).toEqual(cursorSliceInitialState);
@@ -39,7 +41,8 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         const newCursor: string = "cursor2";
@@ -47,7 +50,8 @@ describe('cursor slice tests', () => {
         const expectedState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1", newCursor],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         expect(reducer(previousState, addNewCursorToContext(newCursor))).toEqual(expectedState);
@@ -57,7 +61,8 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         const newCursor: string = "cursor1";
@@ -69,13 +74,15 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         const expectedState: CursorState = {
             currentPage: 1,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
 
@@ -86,13 +93,15 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 1,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         const expectedState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
 
@@ -103,7 +112,8 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         expect(reducer(previousState, goBackWithCursor())).toEqual(previousState);
@@ -113,13 +123,15 @@ describe('cursor slice tests', () => {
         const previousState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'after'
+            direction: 'after',
+            isDisabledPagination: false
         };
 
         const expectedState: CursorState = {
             currentPage: 0,
             cursorList: ["cursor1"],
-            direction: 'before'
+            direction: 'before',
+            isDisabledPagination: false
         };
 
         expect(reducer(previousState, setDirectionOfCursor("before"))).toEqual(expectedState);
