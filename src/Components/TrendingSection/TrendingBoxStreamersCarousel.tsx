@@ -24,8 +24,6 @@ export default function TrendingBoxStreamersCarousel(props: TrendingBoxStreamers
         }
     };
 
-    console.log("render carousel");
-    console.log(props.streamers);
     if (!props.streamers) {
         return (<div/>);
     }

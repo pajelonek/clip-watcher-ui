@@ -9,7 +9,6 @@ import TrendingBoxStreamersCarousel from "./TrendingBoxStreamersCarousel";
 
 export default function TrendingBox(props) {
     const {data, isLoading, isUninitialized, isFetching, isSuccess} = useTopStreamsQuery();
-    console.log("trending box render");
     return (
         data && !isLoading && !isUninitialized && !isFetching && isSuccess ?
         <Paper variant="outlined" square

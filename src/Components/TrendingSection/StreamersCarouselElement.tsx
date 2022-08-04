@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 
 interface StreamersCarouselElementProps {
     key: never,
@@ -27,21 +27,31 @@ function replaceMaskUrlWithSize(urlWithMask: string, width: string, height: stri
 export default function StreamersCarouselElement(props: StreamersCarouselElementProps) {
 
     return (
-        <Grid container border={"solid 1px"}>
-            <Grid item xs={12} marginTop={"1%"} marginBottom={"1%"}>
-                <Typography variant={"h5"} textAlign={"center"}>{props.index + 1}.{props.streamer.user_name}</Typography>
-            </Grid>
-            <Grid item xs={12}  marginBottom={"1%"}>
-                <Typography textAlign={"center"}>Playing: {props.streamer.game_name}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <img
-                    loading="lazy"
-                    draggable={false}
-                    alt={"streamer thumbnail"}
-                    src={replaceMaskUrlWithSize(props.streamer.thumbnail_url, '220', '100')}
-                />
-            </Grid>
+        <Grid container marginLeft={"1%"} marginRight={"1%"}>
+            <Box alignItems={"center"} width={"100%"}
+                 sx={{
+                     boxShadow: 3,
+                     borderRadius: 1,
+                     bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#18181f' : '#202024'),
+                     color: (theme) =>
+                         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+                 }}>
+                <Grid item xs={12} marginTop={"1%"} marginBottom={"1%"}>
+                    <Typography variant={"h5"}
+                                textAlign={"center"}>{props.index + 1}.{props.streamer.user_name}</Typography>
+                </Grid>
+                <Grid item xs={12} marginBottom={"1%"}>
+                    <Typography textAlign={"center"}>Playing: {props.streamer.game_name}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <img
+                        loading="lazy"
+                        draggable={false}
+                        alt={"streamer thumbnail"}
+                        src={replaceMaskUrlWithSize(props.streamer.thumbnail_url, '300', '160')}
+                    />
+                </Grid>
+            </Box>
         </Grid>
     );
 }
