@@ -13,7 +13,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '14'
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -27,10 +27,10 @@ jobs:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
           REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
-#
-#      - name: Deploy
-#        uses: peaceiris/actions-gh-pages@v3
-#        if: ${{ github.ref == 'refs/heads/master' }}
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: ./build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
