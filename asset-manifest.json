@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/clip-watcher-ui/static/css/main.0f47a436.css",
-    "main.js": "/clip-watcher-ui/static/js/main.f2582b64.js",
+    "main.js": "/clip-watcher-ui/static/js/main.54f3d5a2.js",
     "static/js/787.c8efb7f9.chunk.js": "/clip-watcher-ui/static/js/787.c8efb7f9.chunk.js",
     "static/media/twitch.png": "/clip-watcher-ui/static/media/twitch.46e4f1f3a06ced5f65e4.png",
     "static/media/revicons.eot": "/clip-watcher-ui/static/media/revicons.a77de540a38981833f9e.eot",
@@ -9,11 +9,11 @@
     "static/media/revicons.woff": "/clip-watcher-ui/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/clip-watcher-ui/index.html",
     "main.0f47a436.css.map": "/clip-watcher-ui/static/css/main.0f47a436.css.map",
-    "main.f2582b64.js.map": "/clip-watcher-ui/static/js/main.f2582b64.js.map",
+    "main.54f3d5a2.js.map": "/clip-watcher-ui/static/js/main.54f3d5a2.js.map",
     "787.c8efb7f9.chunk.js.map": "/clip-watcher-ui/static/js/787.c8efb7f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0f47a436.css",
-    "static/js/main.f2582b64.js"
+    "static/js/main.54f3d5a2.js"
   ]
 }
