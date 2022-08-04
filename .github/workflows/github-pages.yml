@@ -1,20 +1,18 @@
 # Deploy to GitHub Pages
-
+name: "Github Pages"
 on:
   push:
     branches:
       - master
 jobs:
-  build-and-deploy:
+  github-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -22,6 +20,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm test
       - run: npm run deploy
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
