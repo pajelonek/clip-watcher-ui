@@ -17,28 +17,54 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Setup Pages
+#        uses: actions/configure-pages@v1
+#      - name: Setup Node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: '16'
+#      - run: npm install
+#      - run: npm test
+#      - name: Build with Jekyll
+#        uses: actions/jekyll-build-pages@v1
+#        with:
+#          source: ./build
+#          destination: ./_site
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v1
+#  # Deployment job
+#  deploy:
+#    environment:
+#      name: github-pages
+#      url: ${{ steps.deployment.outputs.page_url }}
+#    runs-on: ubuntu-latest
+#    needs: build
+#    steps:
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        uses: actions/deploy-pages@v1
   github-pages:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup Pages
         uses: actions/configure-pages@v1
-
       - run: git config --global user.email "pawel.jelonek.krakow@gmail.com"
       - run: git config --global user.name "Pawel Jelonek"
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-
       - name: Install SSH Client 🔑
         uses: webfactory/ssh-agent@v0.4.0
         with:
           ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -46,10 +72,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - run: npm install
       - run: npm test
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
@@ -58,16 +82,11 @@ jobs:
           CLEAN: true
           FOLDER: .
           SSH: true
+      - run: npm run deploy
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
           REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
-
-#      - run: npm run deploy
-#        env:
-#          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-#          REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
-#          REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
 #
 #      - name: Deploy
 #        uses: peaceiris/actions-gh-pages@v3
