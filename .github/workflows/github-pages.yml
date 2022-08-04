@@ -38,8 +38,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.4.0
         with:
           ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
       - name: Cache dependencies
         uses: actions/cache@v2
