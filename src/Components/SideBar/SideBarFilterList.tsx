@@ -2,10 +2,7 @@ import * as React from "react";
 import {Box, Typography} from "@mui/material";
 import {selectCategory, selectChannelState, selectPeriod} from "../../Services/Reducers/filterSlice";
 import {useSelector} from "react-redux";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import Grid from "@mui/material/Grid";
 
 export default function SideBarFilterList() {
 
@@ -20,28 +17,40 @@ export default function SideBarFilterList() {
 
     return (
         <Box sx={{
-            display: 'block', flexWrap: 'nowrap',
-            p: 1, m: 1,
-            maxWidth: 300
+            paddingTop: '1',
+            m: 1,
         }}>
-            <Typography>Active filters: </Typography>
-            <List sx={{display: "flex"}}>
-                { filterState.period !== undefined ? <ListItem disablePadding >
-                    <ListItemButton disabled sx={{width: "auto"}}>
-                        <ListItemText primary={filterState.period}/>
-                    </ListItemButton>
-                </ListItem> : null}
-                { filterState.category  !== undefined ? <ListItem disablePadding>
-                    <ListItemButton component="a" href="#simple-list" disabled sx={{width: "auto"}}>
-                        <ListItemText primary={filterState.category.name}/>
-                    </ListItemButton>
-                </ListItem> : null}
-                {filterState.channel.isSelected  === true ? <ListItem disablePadding>
-                    <ListItemButton component="a" href="#simple-list" disabled sx={{width: "auto"}}>
-                        <ListItemText primary={filterState.channel.selectedChannel.display_name}/>
-                    </ListItemButton>
-                </ListItem> : null}
-            </List>
+            <Grid container
+                  alignItems="center"
+                  justifyContent="center">
+                <Grid item xs={12} p={1}>
+                    <Typography>Active filters: </Typography>
+                </Grid>
+                <Grid item xs={12} padding={"2px"}>
+                    <Grid container spacing={1}>
+                        <Grid item>
+                            {filterState.period !== undefined ? <Box sx={{border: '1px solid grey', backgroundColor: "red", borderRadius: '16px'}}
+                                                                     marginLeft={"2%"}
+                                                                     marginRight={"2%"}
+                                                                     textAlign={"center"}>
+                                <Typography m={0.8} style={{display: 'inline-block'}} variant={"body1"}>{filterState.period}</Typography>
+                            </Box> : null}
+                        </Grid>
+                        {filterState.category.name !== '' ? <Grid item>
+                             <Box sx={{border: '1px solid grey', backgroundColor: "red", borderRadius: '16px'}}
+                                                                       textAlign={"center"}>
+                                <Typography m={0.8} style={{display: 'inline-block'}} variant={"body1"}>{filterState.category.name}</Typography>
+                            </Box>
+                        </Grid> : <div/>}
+                        {filterState.channel.isSelected !== false ?<Grid item>
+                             <Box sx={{border: '1px solid grey', backgroundColor: "red", borderRadius: '16px'}}
+                                                                             textAlign={"center"}>
+                                <Typography m={0.8} style={{display: 'inline-block'}} variant={"body1"}>{filterState.channel.selectedChannel.display_name}</Typography>
+                            </Box>
+                        </Grid>: <div/>}
+                    </Grid>
+                </Grid>
+            </Grid>
         </Box>
     );
 }
