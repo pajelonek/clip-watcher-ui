@@ -1,38 +1,45 @@
-# to fix at later date name: Deploy to GitHub Pages
-# to fix at later date
-#on:
-#  push:
-#    branches:
-#      - master
-#jobs:
-#  build-and-deploy:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#
-#      - name: Setup Node
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: '14'
-#
-#      - name: Cache dependencies
-#        uses: actions/cache@v2
-#        with:
-#          path: ~/.npm
-#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-
-#
-#      - run: npm ci
-#      - run: npm run build
-#        env:
-#          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-#          REACT_APP_API_AUTH_USERNAME: ${{ secrets.REACT_APP_API_AUTH_USERNAME }}
-#          REACT_APP_API_AUTH_PASSWORD: ${{ secrets.REACT_APP_API_AUTH_PASSWORD }}
-#
-#      - name: Deploy
-#        uses: peaceiris/actions-gh-pages@v3
-#        if: ${{ github.ref == 'refs/heads/master' }}
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: ./build
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  gh-pages-deploy:
+    name: Deploying to gh-pages
+    runs-on: ubuntu-latest # or macos-latest/windows-latest
+    steps:
+      - name: Setup Node.js for use with actions
+        uses: actions/setup-node@v1.1.0
+        with:
+          version: 16.8 # see https://github.com/actions/setup-node#supported-version-syntax for supported versions
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Clean install dependencies
+        run: npm ci # or yarn install --frozen-lockfile for yarn
+        # if the above doesn't work, use npm i or yarn
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Test app
+        run: npm run test
+
+      - name: Build app
+        run: npm run build
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./build
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
