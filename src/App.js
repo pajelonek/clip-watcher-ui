@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./App.css";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {Provider} from 'react-redux';
 import {store} from "./Middleware/store";

@@ -5,9 +5,9 @@ import Typography from '@mui/material/Typography';
 import {useNavigate} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import ThemeToggle from "../../Components/ThemeButton/ThemeToggle";
-import {clearPage, setPage} from "../../Services/Reducers/pageSlice";
+import {clearPage} from "../../Services/Reducers/pageSlice";
 import {clearCursorList} from "../../Services/Reducers/cursorSlice";
-import {changeClipsPerPage, clearSelectedChannel, clearState} from "../../Services/Reducers/filterSlice";
+import {clearState} from "../../Services/Reducers/filterSlice";
 import {useDispatch} from "react-redux";
 
 export default function Header(props: any) {
