@@ -61,6 +61,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.4.0
+        with:
+          ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -70,6 +74,14 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm install
       - run: npm test
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          CLEAN: true
+          FOLDER: .
+          SSH: true
       - run: npm run deploy
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
