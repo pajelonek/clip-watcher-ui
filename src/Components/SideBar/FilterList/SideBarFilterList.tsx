@@ -19,7 +19,7 @@ export default function SideBarFilterList() {
     const filterBoxStyles = {
         border: '1px solid grey',
         backgroundColor: (theme: any) => theme.palette.mode === 'dark' ? "red" : "#1879d9",
-        color: (theme: any) => theme.palette.mode === 'dark' ? "red" : "white",
+        color: "white",
         borderRadius: '16px'
     };
 
