@@ -4,3 +4,26 @@
 ::-webkit-scrollbar {
     display: none;
 }
+@media (min-width: 1200px) {
+    .sideBarContainer {
+        margin-top: 6%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sideBarContainer {
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 600px) {
+    .sideBarContainer {
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 300px) {
+    .sideBarContainer {
+        margin-top: 2%;
+    }
+}

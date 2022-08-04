@@ -10,12 +10,20 @@ interface TrendingBoxStreamersCarouselProps {
 export default function TrendingBoxStreamersCarousel(props: TrendingBoxStreamersCarouselProps) {
 
     const responsive = {
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
+        largeDesktop: {
+            breakpoint: { max: 3000, min: 1220 },
             items: 6,
         },
+        desktop: {
+            breakpoint: { max: 1220, min: 850 },
+            items: 4,
+        },
+        largeTablet: {
+            breakpoint: { max: 850, min: 640 },
+            items: 3,
+        },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
+            breakpoint: { max: 640, min: 464 },
             items: 2,
         },
         mobile: {
@@ -28,7 +36,7 @@ export default function TrendingBoxStreamersCarousel(props: TrendingBoxStreamers
         return (<div/>);
     }
     else return (
-        <Grid id={"carouselStreamersBox"} item xs={12} width={"100%"} height={"100%"} marginBottom={"2%"}>
+        <Grid id={"carouselStreamersBox"} item sm={12} xs={12} width={"100%"} height={"100%"} marginBottom={"2%"}>
             <Carousel
                 className={"streamersCarousel"}
                 swipeable={false}

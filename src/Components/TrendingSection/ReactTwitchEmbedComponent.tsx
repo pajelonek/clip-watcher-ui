@@ -15,6 +15,7 @@ export default function ReactTwitchEmbedComponent(props: ReactTwitchEmbedCompone
                                key={0}
                                theme={theme.palette.mode}
                                channel={props.userLogin}
+                               targetClass={"testCLass"}
                                autoplay={false}
                                muted={true}
                                targetId={"reactVideo"}/>

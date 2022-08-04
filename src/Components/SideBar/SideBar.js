@@ -15,7 +15,7 @@ export default function SideBar(props) {
     };
 
     return (
-        <Grid container {...props} marginTop={"6%"}>
+        <Grid container {...props} className={"sideBarContainer"} sx={{margin:"auto"}}>
             <Grid item xs={11} lg={10} sx={{margin: 'auto'}} >
                 <Grid container sx={{...commonStyles}}>
                     <Grid item key={'SideBarFilterList'} sx={{
@@ -25,7 +25,7 @@ export default function SideBar(props) {
                         '@media (min-width: 1200px)' : {
                             borderBottom: (theme) => `4px solid ${theme.palette.trendingBoxColor.main}`
                         }
-                    }} xs={12} sm={6} md={3} lg={12}>
+                    }} xs={12} sm={4} md={4} lg={12}>
                         <SideBarFilterList/>
                     </Grid>
                     <Grid item key={'SideBarRadioList'} sx={{
@@ -35,7 +35,7 @@ export default function SideBar(props) {
                         '@media (min-width: 1200px)' : {
                             borderBottom: (theme) => `4px solid ${theme.palette.trendingBoxColor.main}`
                         }
-                    }} xs={12} sm={6} md={3} lg={12}>
+                    }} xs={12} sm={4} md={4} lg={12}>
                         <PeriodRadioFilter/>
                     </Grid>
                     <Grid item key={'ChannelList'} sx={{
@@ -45,7 +45,7 @@ export default function SideBar(props) {
                         '@media (min-width: 1200px)' : {
                             borderBottom: (theme) => `4px solid ${theme.palette.trendingBoxColor.main}`
                         }
-                    }} xs={12} sm={6} md={3} lg={12}>
+                    }} xs={12} sm={4} md={4} lg={12}>
                         <SideBarChannelList/>
                     </Grid>
                 </Grid>
