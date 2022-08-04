@@ -1,7 +1,7 @@
 import React from 'react';
 import {screen} from '@testing-library/react';
 import ChannelFilter from './ChannelFilter';
-import {renderWithProviders} from "../../tests/test-utils";
+import {renderWithProviders} from "../../../tests/test-utils";
 
 describe('renders channel filter component', () => {
 

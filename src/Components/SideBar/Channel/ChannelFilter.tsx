@@ -1,21 +1,21 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import {useSearchChannelQuery} from "../../Middleware/twitchApi";
+import {useSearchChannelQuery} from "../../../Middleware/twitchApi";
 import {useDispatch} from "react-redux";
-import {debounce} from "../../Services/Utils/channelUtils";
+import {debounce} from "../../../Services/Utils/channelUtils";
 import {useNavigate} from "react-router-dom";
 import {
     clearPeriod,
     clearSelectedCategory,
     setIsSelected,
     setSelectedChannel
-} from "../../Services/Reducers/filterSlice";
+} from "../../../Services/Reducers/filterSlice";
 import {Box} from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
-import {clearPage} from "../../Services/Reducers/pageSlice";
-import {clearCursorList} from "../../Services/Reducers/cursorSlice";
+import {clearPage} from "../../../Services/Reducers/pageSlice";
+import {clearCursorList} from "../../../Services/Reducers/cursorSlice";
 
 export interface ChannelOptionLabel {
     display_name: string

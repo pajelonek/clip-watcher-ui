@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import ChannelFilter from "./ChannelFilter";
 import * as React from "react";
 import {Box} from "@mui/material";
-import CategoryFilter from "./CategoryFilter";
+import CategoryFilter from "../Category/CategoryFilter";
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 
 export default function SideBarChannelList(props: any) {

@@ -1,13 +1,13 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import PeriodRadioFilter from "./PeriodRadioFilter";
-import SideBarChannelList from "./SideBarChannelList";
-import SideBarFilterList from "./SideBarFilterList";
+import PeriodRadioFilter from "./Period/PeriodRadioFilter";
+import SideBarChannelList from "./Channel/SideBarChannelList";
+import SideBarFilterList from "./FilterList/SideBarFilterList";
 
 export default function SideBar(props) {
 
     const commonStyles = {
-        bgcolor: "#161617",
+        bgcolor: (theme) => theme.palette.mode === 'dark' ? "#161617" : "#ffffff",
         borderColor: 'text.primary',
         margin: 'auto',
         borderRadius: '20px',

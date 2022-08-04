@@ -40,12 +40,12 @@ export default function Header(props: any) {
             position="static"
             id={"header-AppBar"}
             sx={{
-                bgcolor: (theme: any) => `${theme.palette.navbar.main}`,
+                bgcolor: (theme: any) => theme.palette.mode === 'dark' ? `${theme.palette.navbar.main}` : '#5eafff',
                 borderBottom: (theme) => `1.5px solid ${theme.palette.divider}`
             }} {...props}>
             <Toolbar>
                 <Grid container>
-                    <Grid item xs={6}>
+                    <Grid item xs={6} sx={{margin: "auto"}}>
                         <Typography id={"typographyLogo"}
                                     variant="h6"
                                     color="inherit"

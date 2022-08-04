@@ -32,7 +32,7 @@ export default function StreamersCarouselElement(props: StreamersCarouselElement
                  sx={{
                      boxShadow: 3,
                      borderRadius: 1,
-                     bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#18181f' : '#202024'),
+                     bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#18181f' : '#ffffff'),
                      color: (theme) =>
                          theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
                  }}>

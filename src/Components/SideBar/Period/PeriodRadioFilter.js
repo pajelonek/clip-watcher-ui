@@ -2,9 +2,9 @@ import * as React from "react";
 import FormControl from "@mui/material/FormControl";
 import {Box, FormLabel, MenuItem, Select} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {setPeriod, selectPeriod} from '../../Services/Reducers/filterSlice';
-import {clearCursorList} from "../../Services/Reducers/cursorSlice";
-import {clearPage} from "../../Services/Reducers/pageSlice";
+import {setPeriod, selectPeriod} from '../../../Services/Reducers/filterSlice';
+import {clearCursorList} from "../../../Services/Reducers/cursorSlice";
+import {clearPage} from "../../../Services/Reducers/pageSlice";
 
 export default function PeriodRadioFilter(props) {
     const dispatch = useDispatch();

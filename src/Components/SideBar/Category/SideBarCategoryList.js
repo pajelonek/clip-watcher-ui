@@ -2,17 +2,17 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import {Box, FormControl} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import {useTopCategoryQuery} from "../../Middleware/twitchApi";
+import {useTopCategoryQuery} from "../../../Middleware/twitchApi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {
     clearSelectedChannel,
     selectCategory,
     setCategory
-} from "../../Services/Reducers/filterSlice";
+} from "../../../Services/Reducers/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCursorList} from "../../Services/Reducers/cursorSlice";
-import {clearPage} from "../../Services/Reducers/pageSlice";
+import {clearCursorList} from "../../../Services/Reducers/cursorSlice";
+import {clearPage} from "../../../Services/Reducers/pageSlice";
 
 function replaceMaskUrlWithSize(urlWithMask, size) {
     return urlWithMask.replace('{width}', size).replace('{height}', size);
