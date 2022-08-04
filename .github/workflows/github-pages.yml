@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: git config --global user.email "pawel.jelonek.krakow@gmail.com"
+      - run: git config --global user.name "Pawel Jelonek"
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
