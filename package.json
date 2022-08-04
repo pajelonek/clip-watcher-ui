@@ -1,0 +1,63 @@
+{
+  "name": "clip-watcher-ui",
+  "version": "1.1.7",
+  "private": true,
+  "author": "Pawel Jelonek",
+  "description": "UI for clip-watcher project",
+  "homepage": "https://pajelonek.github.io/clip-watcher-ui",
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@material-ui/core": "^4.12.4",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.1",
+    "@reduxjs/toolkit": "^1.8.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "gh-pages": "^3.2.3",
+    "jest-sonar-reporter": "^2.0.0",
+    "msw": "^0.44.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-multi-carousel": "^2.8.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.0",
+    "react-twitch-embed-video": "^3.0.2",
+    "redux": "^4.1.2",
+    "sonarqube-scanner": "^2.8.1",
+    "typescript": "^4.7.4",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false --silent --env=jsdom --coverage --testResultsProcessor jest-sonar-reporter",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "sonar": "node sonar-project.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 opera version"
+    ]
+  }
+}

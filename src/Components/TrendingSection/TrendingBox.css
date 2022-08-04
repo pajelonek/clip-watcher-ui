@@ -1,0 +1,37 @@
+@media (min-width: 1200px) {
+    iframe {
+        height: 480px;
+    }
+}
+
+@media (max-width: 1200px) {
+    iframe {
+        height: 320px;
+    }
+}
+
+@media (max-width: 900px) {
+    iframe {
+        height: 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    iframe {
+        height: 200px;
+    }
+}
+
+@media (max-width: 300px) {
+    iframe {
+        height: 140px;
+    }
+}
+
+#reactVideo {
+    margin: auto;
+}
+
+.streamersCarousel {
+    height: 100%;
+}
