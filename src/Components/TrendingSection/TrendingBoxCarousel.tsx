@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Carousel from "react-material-ui-carousel";
 import ReactTwitchEmbedComponent from "./ReactTwitchEmbedComponent";
-import Grid from "@mui/material/Grid";
 
 interface TrendingBoxCarouselPros {
     streamArray: any
