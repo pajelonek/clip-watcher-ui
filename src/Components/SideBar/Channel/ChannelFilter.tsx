@@ -102,7 +102,7 @@ export default function ChannelFilter(props: any) {
                                 inputProps={{
                                     ...params.inputProps,
                                     placeholder: "Search a channel",
-                                    autoComplete: 'new-password', // disable autocomplete and autofill
+                                    autoComplete: 'new-password',
                                 }}
                             />
                         </Box>

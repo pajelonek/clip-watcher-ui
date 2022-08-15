@@ -48,7 +48,6 @@ export default function CategoryFilter() {
                                       {...params}
                                       inputProps={{
                                           ...params.inputProps,
-                                          // value: "",
                                           placeholder: "Search a category",
                                           autoComplete: 'new-password', // disable autocomplete and autofill
                                       }}
