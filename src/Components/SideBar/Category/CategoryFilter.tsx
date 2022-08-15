@@ -9,10 +9,6 @@ import FormControl from "@mui/material/FormControl";
 import {useDispatch, useSelector} from "react-redux";
 import {useTopCategoryQuery} from "../../../Middleware/twitchApi";
 
-function replaceMaskUrlWithSize(urlWithMask: string, size: string) {
-    return urlWithMask.replace('{width}', size).replace('{height}', size);
-}
-
 export default function CategoryFilter() {
     const category = useSelector(selectCategory);
     const {data} = useTopCategoryQuery('100');
@@ -46,26 +42,13 @@ export default function CategoryFilter() {
                               }
                           }
 
-                          renderOption={(props, option: any) => (
-                              <Box component="li" sx={{'& > img': {mr: 2, flexShrink: 0}}} {...props}>
-                                  <img
-                                      loading="lazy"
-                                      width="20"
-                                      srcSet={replaceMaskUrlWithSize(option.box_art_url, "20")}
-                                      src={replaceMaskUrlWithSize(option.box_art_url, "20") + ` 2x`}
-                                      alt={option.name}
-                                  />
-                                  {option.name}
-                              </Box>
-                          )}
-
                           renderInput={(params) => (
                               <Box sx={{display: 'flex', alignItems: 'flex-end'}}>
                                   <TextField
                                       {...params}
                                       inputProps={{
                                           ...params.inputProps,
-                                          value: "",
+                                          // value: "",
                                           placeholder: "Search a category",
                                           autoComplete: 'new-password', // disable autocomplete and autofill
                                       }}

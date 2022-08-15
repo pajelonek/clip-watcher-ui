@@ -1,4 +1,4 @@
 
 export default function ClipsChannelLabel() {
-    return (<div></div>);
+    return (<div data-testid={"clips-channel-label"}></div>);
 }
