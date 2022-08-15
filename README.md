@@ -1,3 +1,5 @@
+# CLIP WATCHER UI
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=pajelonek_clip-watcher-ui)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=bugs)](https://sonarcloud.io/dashboard?id=pajelonek_clip-watcher-ui)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=code_smells)](https://sonarcloud.io/dashboard?id=pajelonek_clip-watcher-ui)
@@ -7,43 +9,39 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=pajelonek_clip-watcher-ui)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=security_rating)](https://sonarcloud.io/dashboard?id=pajelonek_clip-watcher-ui)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pajelonek_clip-watcher-ui&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=pajelonek_clip-watcher-ui)
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requirements
 
-## Available Scripts
+For building and running the application you need:
 
-In the project directory, you can run:
+- [Node v16.8](https://nodejs.org/en/download/current/)
 
-### `yarn start`
+## About
 
-Runs the app in the development mode.\
+This is frontend part of the Master’s Degree Project Clip Watcher.
+
+The whole project is hosted publictly on:
+```text
+https://pajelonek.github.io/clip-watcher-ui/
+```
+
+## Running the application locally
+1. You need to fill .env file in the root directory with basic authorization credentials for your clip watcher api application.
+
+Example:
+ ```text
+REACT_APP_API_URL = 'http://localhost:8080'
+REACT_APP_API_AUTH_USERNAME = 'admin'
+REACT_APP_API_AUTH_PASSWORD = 'password'
+  ```
+
+2. Run:
+```yml
+yarn install
+```
+3. Run:
+```shell
+yarn start
+```
+It will run the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
