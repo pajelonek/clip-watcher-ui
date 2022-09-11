@@ -47,7 +47,7 @@ export default function ClipsPagination(props: any) {
 
     const handleChangeRowsPerPage = (
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => { // todo clear
+    ) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
         dispatch(clearCursorList());

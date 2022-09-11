@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Logo from "../../Assets/Images/twitch.png";
 import {getLanguageName} from "../../Assets/Languages/language_iso_codes";
 
-// todo refactor na mniejsze
 export default function ChannelInformationPage(props: any) {
     const channel: Channel = useSelector(selectChannel);
 
