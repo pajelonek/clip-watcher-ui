@@ -26,7 +26,7 @@
     "react-multi-carousel": "^2.8.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "react-twitch-embed-video": "^3.0.2",
     "redux": "^4.1.2",
     "sonarqube-scanner": "^2.8.1",
